@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faSun, faMoon, faCircleXmark} from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin, } from '@fortawesome/free-brands-svg-icons';
 import logo from './white_logo_transparent_background.png';
 
 
@@ -23,6 +23,12 @@ function App() {
   const handleNavClick = (item) => {
     setActiveCard(activeCard === item ? null : item);
   };
+
+    // Function to close the menu and overlay
+    const closeMenu = () => {
+      setMenuOpen(false);
+      setOverlayOpen(false);
+    };
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -177,39 +183,51 @@ useEffect(() => {
   }, [isDarkMode]);
 
   const iconNavItems = [
-    { icon: faGithub, url: 'https://github.com/' },
-    { icon: faLinkedin, url: 'https://spotify.com/' },
     { icon: faBandcamp, url: 'https://bandcamp.com/' },
+    { icon: faGithub, url: 'https://github.com/' },
     { icon: faSpotify, url: 'https://spotify.com/' },
     { icon: faYoutube, url: 'https://youtube.com/' },
     { icon: faVimeoV, url: 'https://vimeo.com/' },
+    { icon: faLinkedin, url: 'https://spotify.com/' },
   ];
 
   return (
     <div className={`App${menuOpen ? " menu-open" : ""}`}>
+      {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
       <div className="navbar">
         <div className="nav-item-toggle-button" onClick={() => setUserChoice(!isDarkMode)}>
           <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} style={{ color: isDarkMode ? '#f4ca15' : '#f0f1f3' }} />
         </div>
-        <div className="logo-container" style={{ paddingLeft: window.innerWidth <= 768 ? '0' :  '15%' }}>
-          <img src={logo} alt="Logo" className="navbar-logo"  />
+        <div className="logo-container" style={{ paddingLeft: windowWidth <= 768 ? '0' : '15%' }}>
+          <img src={logo} alt="Logo" className="navbar-logo" />
         </div>
-
-        <div className="hamburger-menu" onClick={() => setMenuOpen(!menuOpen)}>
-          {windowWidth <= 768 ? "☰" : null}
-        </div>
-        <div className="nav-links">
-          {windowWidth > 768
-            ? iconNavItems.map((item, index) => (
-                <a href={item.url} target="_blank" rel="noopener noreferrer" key={index} className="nav-item">
-                  <FontAwesomeIcon icon={item.icon} />
-                </a>
-              ))
-            : null}
-        </div>
+        {windowWidth <= 768 ? (
+        <div className="hamburger-menu" onClick={() => { setMenuOpen(!menuOpen); }}>
+        {windowWidth <= 768 ? "☰" : null}
       </div>
+      
+        ) : (
+          <div className="nav-links">
+            {iconNavItems.map((item, index) => (
+              <a href={item.url} target="_blank" rel="noopener noreferrer" key={index} className="nav-item">
+                <FontAwesomeIcon icon={item.icon} />
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+      {menuOpen && windowWidth <= 768 && (
+        <div className="nav-links-dropdown">
+          {iconNavItems.map((item, index) => (
+            <a href={item.url} target="_blank" rel="noopener noreferrer" key={index} className="nav-item">
+              <FontAwesomeIcon icon={item.icon} />
+            </a>
+          ))}
+        </div>
+      )}
       <canvas ref={canvasRef}></canvas>
     </div>
   );
+  
 }
 export default App;

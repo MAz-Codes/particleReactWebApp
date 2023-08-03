@@ -9,7 +9,7 @@
 @font-face {
   font-family: 'Dosis';
   src: url('./fonts/Dosis-VariableFont_wght.ttf') format('truetype');
-  font-weight: 100 900; /* Specifies the weight range */
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -23,43 +23,79 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1; /* Add this line */
+  z-index: 1;
 }
 
-.content {
-  position: absolute;
-  top: 60px;
+.overlay {
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* additional styling as needed */
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 2;
+}
+.App.menu-open .overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Styles for the hamburger menu button */
+.App.menu-open .nav-links-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* Add this line */
+}
+.menu-open .overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-links-dropdown {
+  position: absolute;
+  font-size: 30px;
+  margin-right: 2.5%;
+  top: 100px;
+  right: 0%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+  gap: 10px;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transform: translateY(-100%); /* Add this line */
+}
+
+.menu-open .nav-links-dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-links-dropdown a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
 .hamburger-menu {
-  display: none;
+  margin-right: 5%;
   flex-shrink: 0;
   cursor: pointer;
   font-size: 30px;
+  display: none;
 }
 
-/* Styles for the open menu */
-.menu-open .nav-items {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background-color: #333;
-  width: 200px; /* Adjust as needed */
-  z-index: 2;
-}
-
-/* Styles for the medium breakpoint */
 @media (max-width: 768px) {
   .nav-items {
     display: none;
   }
+
   .hamburger-menu {
     display: block;
   }
@@ -68,13 +104,10 @@ canvas {
 .navbar {
   position: absolute;
   justify-content: space-between;
-
-  /*box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.1);*/
-  top: 60px;
+  top: 40px;
   left: 0;
   width: 100%;
   height: 30px;
-
   background: transparent;
   display: flex;
   flex: 3;
@@ -87,11 +120,10 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .navbar-logo {
-  height: 40px; /* Adjust the size as needed */
+  height: 40px;
   animation: fadeLogo 7s linear infinite;
 }
 
@@ -103,21 +135,20 @@ canvas {
   color: white;
   padding: 0;
   cursor: pointer;
-  font-size:18px;
+  font-size: 18px;
   padding-right: 5%;
 }
+
 .nav-links a {
   color: white;
-  text-decoration: none; /* Optional: Removes the underline */
+  text-decoration: none;
 }
 
-.nav-item-toggle-button{
+.nav-item-toggle-button {
   flex-shrink: 0;
   color: white;
   padding-left: 5%;
   cursor: pointer;
-  font-size:20px;
-  font-weight:bold;
+  font-size: 20px;
+  font-weight: bold;
 }
-
-
