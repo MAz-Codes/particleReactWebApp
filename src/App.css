@@ -107,12 +107,18 @@
 
 @font-face {
   font-family: 'Elianto';
-  src: url('./Fonts/Elianto-Regular.woff') format('woff');
+  src: url('/Fonts/Elianto-Regular.woff') format('woff');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
-
+@font-face {
+  font-family: 'Elianto';
+  src: url('/Fonts/Elianto-Regular.ttg') format('trutype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 @keyframes fadeLogo {
   0%, 100% { opacity: 1; }
   10% { opacity: 0.1; }
