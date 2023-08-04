@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
   height: 100vh;
+  font-family:"Elianto"
 }
 
 .hidden {
@@ -16,6 +17,69 @@
   height: 100vh;
   z-index: 2; /* Ensure it's above the main page canvas */
 }
+
+.header-text {
+  position: absolute;
+  max-width: 100%; /* Maximum width of 1200px */
+  margin-left: 5vh;
+  margin-top: 9vh;
+  z-index: 2; /* Positioning above the gradient but below the particles */
+  color: #bdc3c7; /* Adjust the color as needed */
+  font-size: calc(min(25vh, 12.5vw) + 2.25vw); /* Adjust the font size as needed */
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.header-text-2 {
+  position: absolute;
+  max-width: 100%; /* Maximum width of 1200px */
+  margin-top: 28vh;
+  margin-left: 5vh;
+  z-index: 2; /* Positioning above the gradient but below the particles */
+  color: #bdc3c7; /* Adjust the color as needed */
+  font-size: calc(min(31.25vh, 18.75vw) + 3.25vw);
+  font-weight: 700;
+  text-align: cenetr;
+  overflow-wrap: break-word;
+}
+@media (min-width: 1920px) and (min-height: 1080px) {
+  .header-text {
+    font-size: min(562.5px, 312.5px); /* 25% bigger */
+  }
+
+  .header-text-2 {
+    font-size: min(750px, 437.5px); /* 25% bigger */
+  }
+}
+.description-text {
+  position: absolute;
+  right: 0; /* Align to the right edge of the container */
+  bottom: 0; /* Align to the bottom edge of the container */
+  width: auto; /* Let the width be determined by the content */
+  margin-bottom: 10vh;
+  margin-right: 5vh; /* Optional spacing from the bottom */
+  z-index: 2; /* Positioning above the gradient but below the particles */
+  color: #46688f; /* Adjust the color as needed */
+  font-size: calc(5.95vh + 0.6375vw); /* 15% smaller */
+  text-align: right;
+}
+.dark-mode .description-text {
+  color: #bdc3c7; /* Color for dark mode */
+  /* other styles */
+}
+@media (min-width: 1920px) {
+  .description-text {
+    font-size: 172.125px; /* 15% smaller when width is 1920px */
+  }
+}
+
+@media (min-height: 1080px) {
+  .description-text {
+    font-size: min(65.025px, calc(5.95vh + 0.6375vw)); /* Minimum size based on height, but still responsive to width, 15% smaller */
+  }
+}
+
 
 .App.hidden {
   visibility: hidden;
@@ -42,8 +106,8 @@
 }
 
 @font-face {
-  font-family: 'Dosis';
-  src: url('./fonts/Dosis-VariableFont_wght.ttf') format('truetype');
+  font-family: 'Elianto';
+  src: url('./Fonts/Elianto-Regular.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -53,12 +117,17 @@
   0%, 100% { opacity: 1; }
   10% { opacity: 0.1; }
 }
-
-canvas {
+.background-canvas {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 1; /* Lowest z-index */
+}
+.particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
 }
 
 .overlay {
@@ -71,7 +140,7 @@ canvas {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease-in-out, visibility 0.3s ease-in-out;
-  z-index: 2;
+  z-index: 4;
 }
 
 .App.menu-open .overlay,
@@ -102,6 +171,7 @@ canvas {
 }
 
 .hamburger-menu {
+  
   cursor: url('hand.png'), pointer;
   flex-shrink: 0;
   font-size: 30px;
@@ -141,7 +211,7 @@ canvas {
   display: flex;
   flex: 3;
   align-items: center;
-  z-index: 2;
+  z-index: 4;
 }
 
 .logo-container {
@@ -177,7 +247,7 @@ canvas {
   border: none;
   color: white;
   outline: none;
-  z-index: 2;
+  z-index: 4;
   animation: fadeLogo 1s linear infinite;
 }
 @media (max-width: 768px) {

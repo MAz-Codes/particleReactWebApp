@@ -3,9 +3,10 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import logo from './white_logo_transparent_background.png';
+import logo from '../public/newMisaghLogo.png';
 
 function App() {
+  const backgroundCanvasRef = useRef(null);
   const canvasRef = useRef(null);
   const newPageCanvasRef = useRef(null);
   const [userChoice, setUserChoice] = useState(null);
@@ -14,36 +15,69 @@ function App() {
   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const isDarkMode = userChoice !== null ? userChoice : prefersDarkScheme;
 
+
+  const handleWindowResize = () => {
+    const backgroundCanvas = backgroundCanvasRef.current;
+    const backgroundCtx = backgroundCanvas.getContext('2d');
+    backgroundCanvas.width = window.innerWidth;
+    backgroundCanvas.height = window.innerHeight;
+  
+    // Define gradient colors based on the preferred color scheme
+    const colorStart = isDarkMode ? '#141d28' : '#687697';
+    const colorEnd = isDarkMode ? '#936d67' : '#dca49b';
+  
+    const backgroundGradient = backgroundCtx.createLinearGradient(0, 0, 0, backgroundCanvas.height);
+    backgroundGradient.addColorStop(0, colorStart);
+    backgroundGradient.addColorStop(1, colorEnd);
+    backgroundCtx.fillStyle = backgroundGradient;
+    backgroundCtx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
+  
+    const canvas = canvasRef.current;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  
+    const newPageCanvas = newPageCanvasRef.current;
+    newPageCanvas.width = window.innerWidth;
+    newPageCanvas.height = window.innerHeight;
+  };
   const handleArrowClick = () => {
     setNewPage(!newPage);
   };
 
   useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
+    handleWindowResize(); // Call the handleWindowResize function to draw the background when the component is mounted
     window.addEventListener('resize', handleWindowResize);
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
-  }, []);
+  }, [isDarkMode]);
 
   // This is the main page
   useEffect(() => {
     if (newPage) return;
 
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
+    const backgroundCanvas = backgroundCanvasRef.current;
+    const backgroundCtx = backgroundCanvas.getContext('2d');
+    backgroundCanvas.width = window.innerWidth;
+    backgroundCanvas.height = window.innerHeight;
+
     // Define gradient colors based on the preferred color scheme
     const colorStart = isDarkMode ? '#141d28' : '#687697';
     const colorEnd = isDarkMode ? '#936d67' : '#dca49b';
 
+    const backgroundGradient = backgroundCtx.createLinearGradient(0, 0, 0, backgroundCanvas.height);
+    backgroundGradient.addColorStop(0, colorStart);
+    backgroundGradient.addColorStop(1, colorEnd);
+    backgroundCtx.fillStyle = backgroundGradient;
+    backgroundCtx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
     const particles = [];
-    const particlesCount = 200;
+    const particlesCount = 300;
     const effectRadius = (10 / 100) * window.innerWidth; // 5vw radius
 
 
@@ -121,12 +155,12 @@ function App() {
       backgroundGradient.addColorStop(0, colorStart);
       backgroundGradient.addColorStop(1, colorEnd);
       ctx.fillStyle = backgroundGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       animationFrameId = requestAnimationFrame(animate);
 
       const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, effectRadius);
-      gradient.addColorStop(0, 'rgba(256, 256, 256, 0.2)');
+      gradient.addColorStop(0, 'rgba(256, 256, 256, 0.1)');
       gradient.addColorStop(1, 'rgba(128, 128, 128, 0)');
       ctx.fillStyle = gradient;
       ctx.beginPath();
@@ -156,7 +190,7 @@ function App() {
     return () => {
       window.cancelAnimationFrame(animationFrameId);
     };
-  }, [isDarkMode, newPage]);
+  },  [isDarkMode, newPage, window.innerWidth, window.innerHeight]);
 
   // This is the second page
 // This is the second page
@@ -242,7 +276,7 @@ function animateNewPage() {
 }
 
 animateNewPage();
-}, [newPage, isDarkMode]);
+}, [newPage, isDarkMode, window.innerWidth, window.innerHeight]);
 
   const iconNavItems = [
     { icon: faBandcamp, url: 'https://mani-music.bandcamp.com' },
@@ -255,7 +289,13 @@ animateNewPage();
 
   return (
     <div className="page-container">
-      <div className={`App${menuOpen ? " menu-open" : ""}`}>
+    <canvas ref={backgroundCanvasRef} className="background-canvas"></canvas>
+    <div className={`App${menuOpen ? " menu-open" : ""}`}>
+    <h1 className="header-text">MISAGH</h1>
+    <h1 className="header-text-2">AZIMI</h1>
+    <div className={isDarkMode ? 'dark-mode' : ''}>
+  <h1 className="description-text">COMPOSER<br/>DEVELOPER<br/>LECTURER</h1>
+</div>
         {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
         <div className="navbar">
           <div className="nav-item-toggle-button" onClick={() => setUserChoice(!isDarkMode)}>
@@ -280,7 +320,7 @@ animateNewPage();
             )}
           </div>
         </div>
-        {!newPage && <canvas ref={canvasRef}></canvas>}
+        {!newPage && <canvas ref={canvasRef} className="particles-canvas"></canvas>}
         <canvas ref={newPageCanvasRef} className={`new-page-canvas${newPage ? '' : ' hidden'}`}></canvas> {/* Render the new page canvas conditionally */}
       </div>
       <button className="arrow-button" onClick={handleArrowClick}>
