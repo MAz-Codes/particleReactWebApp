@@ -1,9 +1,44 @@
-.App {
-  font-family: 'Dosis', sans-serif;
+.page-container {
   position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+.new-page-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  z-index: 2; /* Ensure it's above the main page canvas */
+}
+
+.App.hidden {
+  visibility: hidden;
+  pointer-events: none; /* Prevent interaction with hidden elements */
+}
+.App,
+.new-page {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  transition: transform 0.5s ease-in-out; /* Transition effect */
+  transform: translateY(0); /* Initial position */
+  z-index: 1; /* Add this line */
+  cursor: url('cursor.png'), auto;
+}
+
+.new-page {
+  z-index: 2; /* Add this line */
+  transform: translateY(100%); /* Initial position: move it off the screen */
+}
+
+.new-page.slide-up {
+  transform: translateY(0); /* Slide-up position: move it back to cover the screen */
 }
 
 @font-face {
@@ -35,44 +70,18 @@ canvas {
   background-color: rgba(0, 0, 0, 0);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 2s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out, visibility 0.3s ease-in-out;
   z-index: 2;
 }
-.App.menu-open .overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  opacity: 1;
-  visibility: visible;
-}
 
-.App.menu-open .nav-links-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0); /* Add this line */
-}
+.App.menu-open .overlay,
 .menu-open .overlay {
   background-color: rgba(0, 0, 0, 0.6);
   opacity: 1;
   visibility: visible;
 }
 
-.nav-links-dropdown {
-  position: absolute;
-  font-size: 30px;
-  margin-right: 2.5%;
-  top: 100px;
-  right: 0%;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 3;
-  gap: 10px;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  transform: translateY(-100%); /* Add this line */
-}
-
-.menu-open .nav-links-dropdown {
+.App.menu-open .nav-links-dropdown {
   opacity: 1;
   visibility: visible;
 }
@@ -83,24 +92,44 @@ canvas {
   padding: 10px;
 }
 
+.hamburger-container {
+  position: absolute;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .hamburger-menu {
-  margin-right: 5%;
+  cursor: url('hand.png'), pointer;
   flex-shrink: 0;
-  cursor: pointer;
   font-size: 30px;
-  display: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-@media (max-width: 768px) {
-  .nav-items {
-    display: none;
-  }
-
-  .hamburger-menu {
-    display: block;
-  }
+.nav-links-dropdown {
+  position: absolute; /* Positioning relative to the container */
+  top: 100%; /* Positioning just below the hamburger menu */
+  font-size: 30px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  gap: 10px;
+  top: 100px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
-
+.nav-item{
+  cursor: url('hand.png'), pointer;
+}
 .navbar {
   position: absolute;
   justify-content: space-between;
@@ -118,37 +147,53 @@ canvas {
 .logo-container {
   flex: 1;
   display: flex;
+  padding-right: 5%;
   justify-content: center;
   align-items: center;
 }
 
 .navbar-logo {
+  cursor: url('hand.png'), pointer;
   height: 40px;
   animation: fadeLogo 7s linear infinite;
-}
-
-.nav-links {
-  display: flex;
-  flex-shrink: 0;
-  margin-left: auto;
-  gap: 40px;
-  color: white;
-  padding: 0;
-  cursor: pointer;
-  font-size: 18px;
-  padding-right: 5%;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
 }
 
 .nav-item-toggle-button {
   flex-shrink: 0;
   color: white;
   padding-left: 5%;
-  cursor: pointer;
+  cursor: url('hand.png'), pointer;
   font-size: 20px;
   font-weight: bold;
+}
+.arrow-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: url('hand.png'), pointer;
+  font-size: 40px;
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  z-index: 2;
+  animation: fadeLogo 1s linear infinite;
+}
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 30px; /* Reduce the size of the logo */
+  }
+
+  .hamburger-menu {
+    font-size: 20px; /* Reduce the size of the hamburger menu icon */
+  }
+
+  .nav-item-toggle-button {
+    font-size: 15px; /* Reduce the size of the toggle icon */
+  }
+
+  .nav-links-dropdown a {
+    font-size: 20px; /* Reduce the size of the logos in the dropdown menu */
+  }
 }
