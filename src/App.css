@@ -1,7 +1,13 @@
 .page-container {
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  /* Use env() to include the safe area insets */
+  height: calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+  width: calc(100vw + env(safe-area-inset-left) + env(safe-area-inset-right));
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   font-family:"Elianto"
 }
 
@@ -20,7 +26,7 @@
 
 .header-text {
   position: absolute;
-  max-width: 100%; /* Maximum width of 1200px */
+  max-width: 100%;
   margin-left: 5vh;
   margin-top: 9vh;
   z-index: 2; /* Positioning above the gradient but below the particles */
@@ -42,6 +48,15 @@
   font-weight: 700;
   text-align: cenetr;
   overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .header-text {
+    margin-top: 20vh; /* Increase the top margin for small screens */
+  }
+  .header-text-2{
+    margin-top: 30vh;
+  }
 }
 @media (min-width: 1920px) and (min-height: 1080px) {
   .header-text {
