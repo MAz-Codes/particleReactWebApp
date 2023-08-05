@@ -77,7 +77,7 @@ function App() {
     canvas.height = window.innerHeight;
 
     const particles = [];
-    const particlesCount = window.innerWidth <= 768 ? 100 : 300; // 100 particles for small screens, 300 otherwise
+    const particlesCount = window.innerWidth <= 768 ? 70 : 200; // 100 particles for small screens, 300 otherwise
 
     const effectRadius = (10 / 100) * window.innerWidth; // 5vw radius
 
