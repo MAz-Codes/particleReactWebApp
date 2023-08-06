@@ -1,7 +1,6 @@
 .page-container {
   position: relative;
   overflow: hidden;
-  /* Use env() to include the safe area insets */
   height: calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
   width: calc(100vw + env(safe-area-inset-left) + env(safe-area-inset-right));
   padding-top: env(safe-area-inset-top);
@@ -10,6 +9,11 @@
   padding-right: env(safe-area-inset-right);
   font-family:"Elianto"
 }
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
 
 .hidden {
   display: none;
@@ -17,21 +21,24 @@
 
 .new-page-canvas {
   position: absolute;
+  animation: fadeIn 04s forwards;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 2; /* Ensure it's above the main page canvas */
+  z-index: 2;
 }
 
 .header-text {
   position: absolute;
+  opacity: 0;
+  animation: fadeIn 3s forwards;
   max-width: 100%;
   margin-left: 5vh;
-  margin-top: 9vh;
-  z-index: 2; /* Positioning above the gradient but below the particles */
-  color: #bdc3c7; /* Adjust the color as needed */
-  font-size: calc(min(25vh, 12.5vw) + 2.25vw); /* Adjust the font size as needed */
+  margin-top:14vh;
+  z-index: 2;
+  color: #bdc3c7;
+  font-size: calc(min(17.75vh, 12.5vw) + 2.25vw);
   font-weight: 700;
   text-align: center;
   overflow-wrap: break-word;
@@ -39,20 +46,22 @@
 
 .header-text-2 {
   position: absolute;
-  max-width: 100%; /* Maximum width of 1200px */
-  margin-top: 28vh;
+  max-width: 100%;
+  opacity: 0;
+  animation: fadeIn 3s forwards;
+  margin-top: 32vh;
   margin-left: 5vh;
-  z-index: 2; /* Positioning above the gradient but below the particles */
-  color: #bdc3c7; /* Adjust the color as needed */
-  font-size: calc(min(31.25vh, 18.75vw) + 3.25vw);
+  z-index: 2;
+  color: #bdc3c7;
+  font-size: calc(min(26.25vh, 18.75vw) + 3.25vw);
   font-weight: 700;
-  text-align: cenetr;
+  text-align: center;
   overflow-wrap: break-word;
 }
 
 @media (max-width: 768px) {
   .header-text {
-    margin-top: 20vh; /* Increase the top margin for small screens */
+    margin-top: 20vh;
   }
   .header-text-2{
     margin-top: 30vh;
@@ -60,40 +69,81 @@
 }
 @media (min-width: 1920px) and (min-height: 1080px) {
   .header-text {
-    font-size: min(562.5px, 312.5px); /* 25% bigger */
+    font-size: min(562.5px, 312.5px);
   }
 
   .header-text-2 {
-    font-size: min(750px, 437.5px); /* 25% bigger */
+    font-size: min(750px, 437.5px);
   }
 }
+
 .description-text {
   position: absolute;
-  right: 0; /* Align to the right edge of the container */
-  bottom: 0; /* Align to the bottom edge of the container */
-  width: auto; /* Let the width be determined by the content */
-  margin-bottom: 10vh;
-  margin-right: 5vh; /* Optional spacing from the bottom */
-  z-index: 2; /* Positioning above the gradient but below the particles */
-  color: #46688f; /* Adjust the color as needed */
-  font-size: calc(5.95vh + 0.6375vw); /* 15% smaller */
+  opacity: 0;
+  animation: fadeIn 3s forwards;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  margin-bottom: 13vh;
+  margin-right: 5vh;
+  z-index: 2;
+  color: #395478;
+  font-size: calc(4.95vh + 0.6375vw);
   text-align: right;
 }
+
 .dark-mode .description-text {
-  color: #bdc3c7; /* Color for dark mode */
-  /* other styles */
+  color: #bdc3c7;
 }
+
 @media (min-width: 1920px) {
   .description-text {
-    font-size: 172.125px; /* 15% smaller when width is 1920px */
+    font-size: 172.125px;
   }
 }
 
 @media (min-height: 1080px) {
   .description-text {
-    font-size: min(65.025px, calc(5.95vh + 0.6375vw)); /* Minimum size based on height, but still responsive to width, 15% smaller */
+    font-size: min(65.025px, calc(5.95vh + 0.6375vw));
   }
 }
+.photo-text {
+  position: absolute;
+  opacity: 0;
+  animation: fadeIn 6s forwards;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  margin-bottom: 10vh;
+  margin-right: 5vh;
+  z-index: 4;
+  color: #395478;
+  font-size: calc(0.95vh + 0.4375vw);
+  text-align: right;
+  cursor: url('hand.png'), pointer;
+}
+.dark-mode .photo-text {
+  color: #bdc3c7;
+}
+.photo-card {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  position: fixed; /* Use fixed positioning for the card */
+  top: 50%; /* Center the card vertically */
+  left: 50%; /* Center the card horizontally */
+  transform: translate(-50%, -50%); /* Necessary for centering */
+  background-color: transparent; /* Adjust color as needed */
+ /* Adjust border as needed */
+  padding: 20px; /* Adjust padding as needed */
+  z-index: 5; /* Positioning above other elements */
+}
+
+.photo-card img {
+  max-width: 100%; /* Make the image responsive */
+  height: auto;
+}
+
+/* rest of the code */
 
 
 .App.hidden {
@@ -112,11 +162,15 @@
 }
 
 .new-page {
+  opacity: 0;
+  animation: fadeIn 3s forwards;
   z-index: 2; /* Add this line */
   transform: translateY(100%); /* Initial position: move it off the screen */
 }
 
 .new-page.slide-up {
+  opacity: 0;
+  animation: fadeIn 3s forwards;
   transform: translateY(0); /* Slide-up position: move it back to cover the screen */
 }
 
@@ -140,6 +194,8 @@
 }
 .background-canvas {
   position: absolute;
+  opacity: 1;
+
   top: 0;
   left: 0;
   width: 100%;
@@ -147,6 +203,8 @@
   z-index: 1; /* Lowest z-index */
 }
 .particles-canvas {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
   position: absolute;
   top: 0;
   left: 0;
@@ -154,6 +212,8 @@
 }
 
 .overlay {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
   position: fixed;
   top: 0;
   left: 0;
@@ -174,7 +234,8 @@
 }
 
 .App.menu-open .nav-links-dropdown {
-  opacity: 1;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
   visibility: visible;
 }
 
@@ -194,7 +255,6 @@
 }
 
 .hamburger-menu {
-  
   cursor: url('hand.png'), pointer;
   flex-shrink: 0;
   font-size: 30px;
@@ -290,3 +350,13 @@
     font-size: 20px; /* Reduce the size of the logos in the dropdown menu */
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

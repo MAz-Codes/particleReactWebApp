@@ -3,9 +3,12 @@
   line-height: 1.5;
   font-weight: 400;
   
+  --bg-gradient-light: linear-gradient(to bottom, #344c6c, #ac817a); 
+  --bg-gradient-dark: linear-gradient(to bottom, #141d28, #936d67);
+  --bg-gradient: var(--bg-gradient-light);
+    
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,6 +18,7 @@
 }
 
 html, body, #root {
+  background: var(--bg-gradient);
   margin: 0;
   padding: 0;
   width: 100%;

@@ -5,44 +5,199 @@ import { faSun, faMoon, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import logo from '../public/newMisaghLogo.png';
 
+class Particle {
+  constructor(x, y, size) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.speedX = Math.random() * 1.2 - 0.5;
+    this.speedY = Math.random() * 1.2 - 0.5;
+  }
+
+  update() {
+    if (this.size + this.x > window.innerWidth || this.x - this.size < 0) {
+      this.speedX = -this.speedX;
+    }
+    if (this.size + this.y > window.innerHeight || this.y - this.size < 0) {
+      this.speedY = -this.speedY;
+    }
+    if (this.y - this.size < 120) {
+      this.y = 120 + this.size;
+      this.speedY = -this.speedY;
+    }
+
+    this.x += this.speedX;
+    this.y += this.speedY;
+  }
+
+  draw(ctx, effectRadius, mouse) {
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();
+
+    const distanceX = mouse.x - this.x;
+    const distanceY = mouse.y - this.y;
+    const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+    if (distance < effectRadius) {
+      const forceDirectionX = distanceX / distance;
+      const forceDirectionY = distanceY / distance;
+      const maxDistance = effectRadius;
+      const force = (maxDistance - distance) / maxDistance;
+      const directionX = forceDirectionX * force * 10.5;
+      const directionY = forceDirectionY * force * 10.5;
+
+      this.x -= directionX;
+      this.y -= directionY;
+    }
+  }
+}
+
+
+
+class NewPageParticle {
+  constructor(x, y, size) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.speedX = Math.random() * 1.5 - 0.7;
+    this.speedY = Math.random() * 1.5 + 0.7; // Positive speed for downward movement
+    this.direction = Math.random() * Math.PI * 2; // Random direction in radians
+  }
+
+  update() {
+    if (this.size + this.x > window.innerWidth || this.x - this.size < 0) {
+      this.speedX = -this.speedX;
+    }
+    if (this.y + this.size > window.innerHeight) {
+      this.speedY = Math.random() * 1.5 + 0.7; // Reset the speed if the particle reaches the bottom
+      this.y = this.size; // Position the particle at the top
+    }
+    if (this.y - this.size < 0) {
+      this.speedY = Math.abs(this.speedY); // Ensure that the speed is positive if the particle reaches the top
+    }
+
+    this.x += this.speedX;
+    this.y += this.speedY;
+  }
+
+  draw(ctx) {
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2; 
+    ctx.save(); // Save the current state of the context
+    ctx.translate(this.x, this.y); // Change the origin to the particle's center
+    ctx.rotate(this.direction); // Rotate the context
+    ctx.beginPath();
+    ctx.moveTo(0, -this.size);
+    ctx.lineTo(this.size, this.size);
+    ctx.lineTo(-this.size, this.size);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore(); // Restore the context to its previous state
+  }
+}
+
+const iconNavItems = [
+  { icon: faBandcamp, url: 'https://mani-music.bandcamp.com' },
+  { icon: faGithub, url: 'https://github.com/' },
+  { icon: faSpotify, url: 'https://spotify.com/' },
+  { icon: faYoutube, url: 'https://youtube.com/' },
+  { icon: faVimeoV, url: 'https://vimeo.com/' },
+  { icon: faLinkedin, url: 'https://linkedin.com/' }, // Fixed the URL for LinkedIn
+];
+
 function App() {
   const backgroundCanvasRef = useRef(null);
   const canvasRef = useRef(null);
+  const photoTextRef = useRef(null)
   const newPageCanvasRef = useRef(null);
   const [userChoice, setUserChoice] = useState(null);
+  const [fadeOut, setFadeOut] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [newPage, setNewPage] = useState(false);
-  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [showPhoto, setShowPhoto] = useState(false);
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches; // Moved inside the App component
   const isDarkMode = userChoice !== null ? userChoice : prefersDarkScheme;
 
+  const handleArrowClick = () => {
+    // Start the fade-out
+    setFadeOut(true);
+  
+    // After the transition duration (1 second in this example), toggle the newPage state
+    setTimeout(() => {
+      setNewPage(prevNewPage => !prevNewPage);
+      // Optionally, reset the fadeOut state if you want to use it again later
+      setFadeOut(false);
+    }, 1500); // 1000ms equals the transition duration
+  };
 
-  const handleWindowResize = () => {
-    const backgroundCanvas = backgroundCanvasRef.current;
-    const backgroundCtx = backgroundCanvas.getContext('2d');
-    backgroundCanvas.width = window.innerWidth;
-    backgroundCanvas.height = window.innerHeight;
-  
-    // Define gradient colors based on the preferred color scheme
-    const colorStart = isDarkMode ? '#141d28' : '#687697';
-    const colorEnd = isDarkMode ? '#936d67' : '#dca49b';
-  
-    const backgroundGradient = backgroundCtx.createLinearGradient(0, 0, 0, backgroundCanvas.height);
-    backgroundGradient.addColorStop(0, colorStart);
-    backgroundGradient.addColorStop(1, colorEnd);
-    backgroundCtx.fillStyle = backgroundGradient;
-    backgroundCtx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
-  
+  const newPageRef = useRef(newPage); 
+
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    // Set default gradient based on browser's preference
+    if (prefersDarkScheme) {
+        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-dark)');
+    } else {
+        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-light)');
+    }
+    
+    // Watch for changes in isDarkMode state
+    if (isDarkMode) {
+        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-dark)');
+    } else {
+        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-light)');
+    }
+}, [isDarkMode, prefersDarkScheme]);
+
+
+  // This function will update canvas dimensions and create a gradient
+  const updateCanvasDimensions = (canvasRef, colorStart, colorEnd) => {
     const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    const backgroundGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    backgroundGradient.addColorStop(0, colorStart);
+    backgroundGradient.addColorStop(1, colorEnd);
+    ctx.fillStyle = backgroundGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  };
+
+  const handleClickOutside = (event) => {
+    if (photoTextRef.current && !photoTextRef.current.contains(event.target)) {
+      setShowPhoto(false);
+    }
+  };
+
+  const handleWindowResize = () => {
+    const colorStart = isDarkMode ? '#141d28' : '#334c6c';
+    const colorEnd = isDarkMode ? '#936d67' : '#ad817a';
+    if (backgroundCanvasRef.current) {
+      updateCanvasDimensions(backgroundCanvasRef, colorStart, colorEnd);
+    }
+    if (canvasRef.current) {
+      updateCanvasDimensions(canvasRef, colorStart, colorEnd);
+    }
+    if (newPageCanvasRef.current) {
+      updateCanvasDimensions(newPageCanvasRef, colorStart, colorEnd);
+    }
+  };
   
-    const newPageCanvas = newPageCanvasRef.current;
-    newPageCanvas.width = window.innerWidth;
-    newPageCanvas.height = window.innerHeight;
-  };
-  const handleArrowClick = () => {
-    setNewPage(!newPage);
-  };
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    newPageRef.current = newPage; // Update the ref whenever newPage changes
+  }, [newPage]);
 
   useEffect(() => {
     handleWindowResize(); // Call the handleWindowResize function to draw the background when the component is mounted
@@ -50,87 +205,17 @@ function App() {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
-  }, [isDarkMode]);
+  }, [isDarkMode,newPage]);
 
-  // This is the main page
   useEffect(() => {
     if (newPage) return;
-
-    const backgroundCanvas = backgroundCanvasRef.current;
-    const backgroundCtx = backgroundCanvas.getContext('2d');
-    backgroundCanvas.width = window.innerWidth;
-    backgroundCanvas.height = window.innerHeight;
-
-    // Define gradient colors based on the preferred color scheme
-    const colorStart = isDarkMode ? '#141d28' : '#687697';
-    const colorEnd = isDarkMode ? '#936d67' : '#dca49b';
-
-    const backgroundGradient = backgroundCtx.createLinearGradient(0, 0, 0, backgroundCanvas.height);
-    backgroundGradient.addColorStop(0, colorStart);
-    backgroundGradient.addColorStop(1, colorEnd);
-    backgroundCtx.fillStyle = backgroundGradient;
-    backgroundCtx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
-
+    
     const canvas = canvasRef.current;
+    if (!canvas) return;  
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
     const particles = [];
-    const particlesCount = window.innerWidth <= 768 ? 70 : 200; // 100 particles for small screens, 300 otherwise
-
+    const particlesCount = window.innerWidth <= 768 ? 70 : 150; // 100 particles for small screens, 300 otherwise
     const effectRadius = (10 / 100) * window.innerWidth; // 5vw radius
-
-
-    class Particle {
-      constructor(x, y, size) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.speedX = Math.random() * 1.2 - 0.5;
-        this.speedY = Math.random() * 1.2 - 0.5;
-      }
-
-      update() {
-        if (this.size + this.x > canvas.width || this.x - this.size < 0) {
-          this.speedX = -this.speedX;
-        }
-        if (this.size + this.y > canvas.height || this.y - this.size < 0) {
-          this.speedY = -this.speedY;
-        }
-        if (this.y - this.size < 120) {
-          this.y = 120 + this.size;
-          this.speedY = -this.speedY;
-        }
-
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        const distanceX = mouse.x - this.x;
-        const distanceY = mouse.y - this.y;
-        const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-
-        if (distance < effectRadius) {
-          const forceDirectionX = distanceX / distance;
-          const forceDirectionY = distanceY / distance;
-          const maxDistance = effectRadius;
-          const force = (maxDistance - distance) / maxDistance;
-          const directionX = forceDirectionX * force * 10.5;
-          const directionY = forceDirectionY * force * 10.5;
-
-          this.x -= directionX;
-          this.y -= directionY;
-        }
-      }
-
-      draw() {
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-      }
-    }
 
     for (let i = 0; i < particlesCount; i++) {
       particles.push(
@@ -152,12 +237,11 @@ function App() {
     let animationFrameId;
 
     function animate() {
-      const backgroundGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      backgroundGradient.addColorStop(0, colorStart);
-      backgroundGradient.addColorStop(1, colorEnd);
-      ctx.fillStyle = backgroundGradient;
+      if (newPageRef.current) {
+        window.cancelAnimationFrame(animationFrameId);
+        return;
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       animationFrameId = requestAnimationFrame(animate);
 
       const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, effectRadius);
@@ -181,9 +265,10 @@ function App() {
           }
         }
         particles[i].update();
-        particles[i].draw();
+        particles[i].draw(ctx, effectRadius, mouse);
       }
     }
+
     if (!newPage) {
       animate();
     }
@@ -191,112 +276,67 @@ function App() {
     return () => {
       window.cancelAnimationFrame(animationFrameId);
     };
-  },  [isDarkMode, newPage, window.innerWidth, window.innerHeight]);
+  }, [isDarkMode, newPage]);
 
-  // This is the second page
-// This is the second page
-useEffect(() => {
-  if (!newPage) return;
+  useEffect(() => {
+    if (!newPage) return;
 
-  const newPageCanvas = newPageCanvasRef.current;
-  const newPageCtx = newPageCanvas.getContext('2d');
-  newPageCanvas.width = window.innerWidth;
-  newPageCanvas.height = window.innerHeight;
+    const newPageCanvas = newPageCanvasRef.current;
+    if (!newPageCanvas) return;
+    const newPageCtx = newPageCanvas.getContext('2d');
+    const newPageParticles = [];
+    const newPageParticlesCount = 150;
 
-  // Define gradient colors (you can customize these)
-  const colorStart = isDarkMode ? '#585359' : '#9b939f';
-  const colorMiddle = isDarkMode ? '#26364a' : '#435e80';
-  const colorEnd = isDarkMode ? '#1d2938' : '#334963';
-
-
-  const newPageParticles = [];
-  const newPageParticlesCount = 150;
-
-  class NewPageParticle {
-    constructor(x, y, size) {
-      this.x = x;
-      this.y = y;
-      this.size = size;
-      this.speedX = Math.random() * 1.5 - 0.7;
-      this.speedY = Math.random() * 1.5 + 0.7; // Positive speed for downward movement
+    for (let i = 0; i < newPageParticlesCount; i++) {
+      newPageParticles.push(
+        new NewPageParticle(
+          Math.random() * newPageCanvas.width,
+          0, // Start particles from the top
+          Math.random() * 3 + 0.5
+        )
+      );
     }
-  
-    update() {
-      if (this.size + this.x > newPageCanvas.width || this.x - this.size < 0) {
-        this.speedX = -this.speedX;
+
+    function animateNewPage() {
+      newPageCtx.clearRect(0, 0, newPageCanvas.width, newPageCanvas.height);
+
+      for (let i = 0; i < newPageParticles.length; i++) {
+        newPageParticles[i].update();
+        newPageParticles[i].draw(newPageCtx);
       }
-      if (this.y + this.size > newPageCanvas.height) {
-        this.speedY = Math.random() * 1.5 + 0.7; // Reset the speed if the particle reaches the bottom
-        this.y = this.size; // Position the particle at the top
-      }
-      if (this.y - this.size < 0) {
-        this.speedY = Math.abs(this.speedY); // Ensure that the speed is positive if the particle reaches the top
-      }
-  
-      this.x += this.speedX;
-      this.y += this.speedY;
+
+      requestAnimationFrame(animateNewPage);
     }
-  
-    
 
-    draw() {
-      newPageCtx.fillStyle = 'gray';
-      newPageCtx.beginPath();
-      newPageCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      newPageCtx.closePath();
-      newPageCtx.fill();
-    }
-  }
-
- // Initialize new page particles
-for (let i = 0; i < newPageParticlesCount; i++) {
-  newPageParticles.push(
-    new NewPageParticle(
-      Math.random() * newPageCanvas.width,
-      0, // Start particles from the top
-      Math.random() * 3 + 0.5
-    )
-  );
-}
-
-
-function animateNewPage() {
-  const backgroundGradient = newPageCtx.createLinearGradient(0, 0, newPageCanvas.width, 0);
-  backgroundGradient.addColorStop(0, colorStart);
-  backgroundGradient.addColorStop(0.5, colorMiddle);
-  backgroundGradient.addColorStop(1, colorEnd);
-  newPageCtx.fillStyle = backgroundGradient;
-  newPageCtx.fillRect(0, 0, newPageCanvas.width, newPageCanvas.height);
-
-  for (let i = 0; i < newPageParticles.length; i++) {
-    newPageParticles[i].update();
-    newPageParticles[i].draw();
-  }
-
-  requestAnimationFrame(animateNewPage);
-}
-
-animateNewPage();
-}, [newPage, isDarkMode, window.innerWidth, window.innerHeight]);
-
-  const iconNavItems = [
-    { icon: faBandcamp, url: 'https://mani-music.bandcamp.com' },
-    { icon: faGithub, url: 'https://github.com/' },
-    { icon: faSpotify, url: 'https://spotify.com/' },
-    { icon: faYoutube, url: 'https://youtube.com/' },
-    { icon: faVimeoV, url: 'https://vimeo.com/' },
-    { icon: faLinkedin, url: 'https://linkedin.com/' }, // Fixed the URL for LinkedIn
-  ];
+    animateNewPage();
+  }, [newPage, isDarkMode]);
 
   return (
     <div className="page-container">
-    <canvas ref={backgroundCanvasRef} className="background-canvas"></canvas>
-    <div className={`App${menuOpen ? " menu-open" : ""}`}>
-    <h1 className="header-text">MISAGH</h1>
-    <h1 className="header-text-2">AZIMI</h1>
-    <div className={isDarkMode ? 'dark-mode' : ''}>
-  <h1 className="description-text">COMPOSER<br/>DEVELOPER<br/>LECTURER</h1>
-</div>
+      <canvas ref={backgroundCanvasRef} className="background-canvas"></canvas>
+      <div className={`App${menuOpen ? " menu-open" : ""}`}>
+        {!newPage && (
+          <>
+            <div className={fadeOut ? "fade-out" : ""}>
+              <div className="header-container">
+                  <h1 className="header-text">MISAGH</h1>
+                  <h1 className="header-text-2">AZIMI</h1>
+              </div>
+            </div>
+            
+      {showPhoto && (
+        <div className="photo-card">
+          <img src="src/Misagh_Headshot.png" alt="Description" />
+        </div>
+      )}
+            <div className={fadeOut ? "fade-out" : ""}>
+              <div className={isDarkMode ? 'dark-mode' : ''}>
+                <h1 className="description-text">/COMPOSER<br/>/DEVELOPER<br/>/LECTURER</h1>
+                <p ref={photoTextRef} className="photo-text" onClick={() => setShowPhoto(!showPhoto)}>click here to see my face</p>
+              </div>
+            </div>  
+          </>
+        )}
         {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
         <div className="navbar">
           <div className="nav-item-toggle-button" onClick={() => setUserChoice(!isDarkMode)}>
@@ -321,8 +361,12 @@ animateNewPage();
             )}
           </div>
         </div>
-        {!newPage && <canvas ref={canvasRef} className="particles-canvas"></canvas>}
-        <canvas ref={newPageCanvasRef} className={`new-page-canvas${newPage ? '' : ' hidden'}`}></canvas> {/* Render the new page canvas conditionally */}
+        <div className={fadeOut ? "fade-out" : ""}>
+          {!newPage && <canvas ref={canvasRef} className="particles-canvas"></canvas>}
+        </div>
+        <div className={fadeOut ? "fade-out" : ""}>
+          <canvas ref={newPageCanvasRef} className={`new-page-canvas${newPage ? '' : ' hidden'}`}></canvas> {/* Render the new page canvas conditionally */}
+        </div>
       </div>
       <button className="arrow-button" onClick={handleArrowClick}>
         <FontAwesomeIcon icon={faArrowDown} />
