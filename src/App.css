@@ -14,6 +14,15 @@
   transition: opacity 1s ease-out;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: white !important;
+  cursor: url('hand.png'), pointer;
+}
 
 .hidden {
   display: none;
@@ -28,6 +37,43 @@
   height: 100vh;
   z-index: 2;
 }
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  gap: 20px;
+  margin-left: 7.5vh;
+  margin-top:19vh;
+  z-index: 3;
+}
+
+.face-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 3s forwards;
+  position: relative; /* If needed, but avoid absolute */
+  z-index:3;
+  color: #bdc3c7;
+  font-size: calc(min(1.25vh, 1.75vw) + .25vw);
+  font-weight: 700;
+  cursor: url('hand.png'), pointer;
+}
+
+.my-face{
+  color: #bdc3c7;
+  font-size: calc(min(1.7vh, 1.7vw) + .25vw);
+  opacity: 0;
+  animation: fadeIn 4s forwards;
+  font-weight: 700;
+}
+
+.my-face:hover{
+  z-index:6;
+  color: white !important;
+}
 
 .header-text {
   position: absolute;
@@ -38,7 +84,7 @@
   margin-top:14vh;
   z-index: 2;
   color: #bdc3c7;
-  font-size: calc(min(17.75vh, 12.5vw) + 2.25vw);
+  font-size: calc(min(19.25vh, 13.75vw) + 1.5vw);
   font-weight: 700;
   text-align: center;
   overflow-wrap: break-word;
@@ -86,15 +132,31 @@
   width: auto;
   margin-bottom: 13vh;
   margin-right: 5vh;
-  z-index: 2;
+  z-index: 4;
   color: #395478;
   font-size: calc(4.95vh + 0.6375vw);
   text-align: right;
 }
 
+
 .dark-mode .description-text {
   color: #bdc3c7;
 }
+.new-page-description {
+  max-width: 50%; /* Ensure it doesn't occupy the entire row. Adjust as necessary */
+  max-height: 90vh; /* Set a maximum height for the container. You can adjust this as per your design */
+  opacity: 0;
+  animation: fadeIn 4s forwards;
+  color: #bdc3c7;
+  font-size: calc(min(1.75vh, 1.75vw) + .25vw);
+  font-weight: 700;
+  text-align: left;
+  z-index: 3;
+  overflow-wrap: break-word;
+  overflow-y: auto; /* Add vertical scrolling if content exceeds the max-height */
+  position: relative; /* If needed, but avoid absolute */
+}
+
 
 @media (min-width: 1920px) {
   .description-text {
@@ -108,22 +170,7 @@
   }
 }
 .photo-text {
-  position: absolute;
-  opacity: 0;
-  animation: fadeIn 6s forwards;
-  right: 0;
-  bottom: 0;
-  width: auto;
-  margin-bottom: 10vh;
-  margin-right: 5vh;
-  z-index: 4;
-  color: #395478;
-  font-size: calc(0.95vh + 0.4375vw);
-  text-align: right;
-  cursor: url('hand.png'), pointer;
-}
-.dark-mode .photo-text {
-  color: #bdc3c7;
+
 }
 .photo-card {
   opacity: 0;
@@ -141,6 +188,7 @@
 .photo-card img {
   max-width: 100%; /* Make the image responsive */
   height: auto;
+  z-index: 5
 }
 
 /* rest of the code */
@@ -172,6 +220,18 @@
   opacity: 0;
   animation: fadeIn 3s forwards;
   transform: translateY(0); /* Slide-up position: move it back to cover the screen */
+}
+
+.new-page-overlay {
+  position: fixed; /* Fixed positioning to cover the viewport */
+  opacity: 0;
+  animation: fadeIn 3s forwards;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Dark with 70% opacity */
+  z-index: 2; /* Ensure it's above most other elements */
 }
 
 @font-face {
@@ -357,6 +417,15 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
   }
 }
 

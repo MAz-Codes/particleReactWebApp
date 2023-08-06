@@ -84,7 +84,7 @@ class NewPageParticle {
   }
 
   draw(ctx) {
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = 'gray';
     ctx.lineWidth = 2; 
     ctx.save(); // Save the current state of the context
     ctx.translate(this.x, this.y); // Change the origin to the particle's center
@@ -112,6 +112,8 @@ function App() {
   const backgroundCanvasRef = useRef(null);
   const canvasRef = useRef(null);
   const photoTextRef = useRef(null)
+  const photoCardRef = useRef(null);
+
   const newPageCanvasRef = useRef(null);
   const [userChoice, setUserChoice] = useState(null);
   const [fadeOut, setFadeOut] = useState(false);
@@ -135,23 +137,6 @@ function App() {
 
   const newPageRef = useRef(newPage); 
 
-  useEffect(() => {
-    const root = document.documentElement;
-    
-    // Set default gradient based on browser's preference
-    if (prefersDarkScheme) {
-        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-dark)');
-    } else {
-        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-light)');
-    }
-    
-    // Watch for changes in isDarkMode state
-    if (isDarkMode) {
-        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-dark)');
-    } else {
-        root.style.setProperty('--bg-gradient', 'var(--bg-gradient-light)');
-    }
-}, [isDarkMode, prefersDarkScheme]);
 
 
   // This function will update canvas dimensions and create a gradient
@@ -169,10 +154,23 @@ function App() {
   };
 
   const handleClickOutside = (event) => {
-    if (photoTextRef.current && !photoTextRef.current.contains(event.target)) {
-      setShowPhoto(false);
+    console.log('Clicked element:', event.target);  // Log the clicked element
+
+    // Check if the clicked element is the image or the new-page-canvas
+    const isImageClicked = event.target.tagName === 'IMG';
+    const isNewPageCanvasClicked = event.target.className.includes('new-page-canvas');
+
+    if (isImageClicked || isNewPageCanvasClicked) {
+        setShowPhoto(false);
     }
-  };
+
+    // Existing logic
+    if (photoTextRef.current && !photoTextRef.current.contains(event.target) &&
+        photoCardRef.current && !photoCardRef.current.contains(event.target)) {
+        console.log('Outside of photo text and photo card detected');
+        setShowPhoto(false);
+    }
+};
 
   const handleWindowResize = () => {
     const colorStart = isDarkMode ? '#141d28' : '#334c6c';
@@ -324,20 +322,20 @@ function App() {
               </div>
             </div>
             
-      {showPhoto && (
-        <div className="photo-card">
-          <img src="/Misagh_Headshot.png" alt="Description" />
-        </div>
-      )}
+ 
             <div className={fadeOut ? "fade-out" : ""}>
               <div className={isDarkMode ? 'dark-mode' : ''}>
                 <h1 className="description-text">/COMPOSER<br/>/DEVELOPER<br/>/LECTURER</h1>
-                <p ref={photoTextRef} className="photo-text" onClick={() => setShowPhoto(!showPhoto)}>click here to see my face</p>
+                
               </div>
             </div>  
           </>
         )}
         {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
+        <div className={fadeOut ? "fade-out" : ""}>
+        {newPage && <div className="new-page-overlay"></div>}
+        </div>
+
         <div className="navbar">
           <div className="nav-item-toggle-button" onClick={() => setUserChoice(!isDarkMode)}>
             <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} style={{ color: isDarkMode ? '#f4ca15' : '#ffffff' }} />
@@ -365,6 +363,20 @@ function App() {
           {!newPage && <canvas ref={canvasRef} className="particles-canvas"></canvas>}
         </div>
         <div className={fadeOut ? "fade-out" : ""}>
+        <div className="flex-container">
+            <h1 className={newPage ? 'new-page-description' : ' hidden'}>I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, coding, and the exploration of artificial intelligence. <br/><br/>I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I release both under my <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=IQ7UTJ64Qguk8mN4KRy_4Q' target='_blank'>own name</a>, as well as <a href='https://mani-music.bandcamp.com/' target="_blank">MÁNĪ</a>.
+                <br/><br/>My areas of scholary interest and research include artificial intelligence for creative applciations, music and digital media, music production and also video-game audio and music implimentation.<br/><br/>I hold a Master's degree in Music from Folkwang University of the Arts. I also hold a Machine Learning certificate from <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>Stanford Online</a>, and my skills as a Front-End Developer are certified by <a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>Meta</a>.</h1>
+            
+            <div className="face-container">
+                <h1 ref={photoTextRef} className={newPage ? 'my-face' : ' hidden'} onClick={() => setShowPhoto(!showPhoto)}>Click here to see my face!</h1>
+                {showPhoto && (
+                    <div className="photo-card">
+                        <img src="/src/Misagh_Headshot.png" />
+                    </div>
+                )}
+            </div>
+        </div>
+
           <canvas ref={newPageCanvasRef} className={`new-page-canvas${newPage ? '' : ' hidden'}`}></canvas> {/* Render the new page canvas conditionally */}
         </div>
       </div>
