@@ -326,7 +326,7 @@ function App() {
             
       {showPhoto && (
         <div className="photo-card">
-          <img src="src/Misagh_Headshot.png" alt="Description" />
+          <img src="/Misagh_Headshot.png" alt="Description" />
         </div>
       )}
             <div className={fadeOut ? "fade-out" : ""}>
