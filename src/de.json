@@ -1,0 +1,11 @@
+{
+    "header": {
+      "firstName": "MISAGH",
+      "lastName": "AZIMI"
+    },
+    "jobs": {
+      "composer": "/KOMPONIST",
+      "developer": "/ENTWICKLER",
+      "lecturer": "/DOZENT"
+    }
+}

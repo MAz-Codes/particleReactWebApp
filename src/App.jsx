@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import logo from '../public/newMisaghLogo.png';
+import { useTranslation } from 'react-i18next';
+import i18n from "/src/i18n.jsx"
 
 class Particle {
   constructor(x, y, size) {
@@ -63,7 +65,7 @@ class NewPageParticle {
     this.y = y;
     this.size = size;
     this.speedX = Math.random() * 1.5 - 0.7;
-    this.speedY = Math.random() * 1.5 + 0.7; // Positive speed for downward movement
+    this.speedY = Math.random() * 0.8 + 0.2; // Positive speed for downward movement
     this.direction = Math.random() * Math.PI * 2; // Random direction in radians
   }
 
@@ -109,6 +111,9 @@ const iconNavItems = [
 ];
 
 function App() {
+
+
+  const { t } = useTranslation();
   const backgroundCanvasRef = useRef(null);
   const canvasRef = useRef(null);
   const photoTextRef = useRef(null)
@@ -123,6 +128,10 @@ function App() {
   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches; // Moved inside the App component
   const isDarkMode = userChoice !== null ? userChoice : prefersDarkScheme;
 
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  }
+  
   const handleArrowClick = () => {
     // Start the fade-out
     setFadeOut(true);
@@ -158,9 +167,12 @@ function App() {
 
     // Check if the clicked element is the image or the new-page-canvas
     const isImageClicked = event.target.tagName === 'IMG';
-    const isNewPageCanvasClicked = event.target.className.includes('new-page-canvas');
+    const isNewPageCanvasClicked = String(event.target.className).includes('new-page-canvas');
 
-    if (isImageClicked || isNewPageCanvasClicked) {
+    // Check if the clicked element is flex-container-right or its children
+    const isFlexContainerRightClicked = event.target.classList.contains('flex-container-right') || event.target.closest('.flex-container-right');
+
+    if (isImageClicked || isNewPageCanvasClicked || isFlexContainerRightClicked) {
         setShowPhoto(false);
     }
 
@@ -171,6 +183,7 @@ function App() {
         setShowPhoto(false);
     }
 };
+
 
   const handleWindowResize = () => {
     const colorStart = isDarkMode ? '#141d28' : '#334c6c';
@@ -283,14 +296,14 @@ function App() {
     if (!newPageCanvas) return;
     const newPageCtx = newPageCanvas.getContext('2d');
     const newPageParticles = [];
-    const newPageParticlesCount = 150;
+    const newPageParticlesCount = 50;
 
     for (let i = 0; i < newPageParticlesCount; i++) {
       newPageParticles.push(
         new NewPageParticle(
           Math.random() * newPageCanvas.width,
           0, // Start particles from the top
-          Math.random() * 3 + 0.5
+          Math.random() * 3 + 0.2
         )
       );
     }
@@ -309,6 +322,7 @@ function App() {
     animateNewPage();
   }, [newPage, isDarkMode]);
 
+
   return (
     <div className="page-container">
       <canvas ref={backgroundCanvasRef} className="background-canvas"></canvas>
@@ -317,67 +331,81 @@ function App() {
           <>
             <div className={fadeOut ? "fade-out" : ""}>
               <div className="header-container">
-                  <h1 className="header-text">MISAGH</h1>
-                  <h1 className="header-text-2">AZIMI</h1>
+                <h1 className="header-text">{t('header.firstName')}</h1>
+                <h1 className="header-text-2">{t('header.lastName')}</h1>
               </div>
             </div>
-            
- 
             <div className={fadeOut ? "fade-out" : ""}>
               <div className={isDarkMode ? 'dark-mode' : ''}>
-                <h1 className="description-text">/COMPOSER<br/>/DEVELOPER<br/>/LECTURER</h1>
-                
+                <h1 className="description-text">{t('jobs.composer')}<br/>{t('jobs.developer')}<br/>{t('jobs.lecturer')}</h1>
               </div>
-            </div>  
+            </div>
           </>
         )}
-        {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
+        {menuOpen && (
+          <div className="overlay" onClick={() => setMenuOpen(false)}></div>
+        )}
         <div className={fadeOut ? "fade-out" : ""}>
-        {newPage && <div className="new-page-overlay"></div>}
+          {newPage && <div className="new-page-overlay"></div>}
         </div>
 
         <div className="navbar">
           <div className="nav-item-toggle-button" onClick={() => setUserChoice(!isDarkMode)}>
             <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} style={{ color: isDarkMode ? '#f4ca15' : '#ffffff' }} />
           </div>
+        
           <div className="logo-container">
+            <a href="/">
             <img src={logo} alt="Logo" className="navbar-logo" />
+            </a>
           </div>
-  
-          <div className="hamburger-container">
-            <div className="hamburger-menu" onClick={() => { setMenuOpen(!menuOpen); }}>
-              ☰
+          
+            <div className='language-buttons'>
+              <button className='language-en' onClick={() => changeLanguage('en')}>EN</button>
+              <button className='language-de' onClick={() => changeLanguage('de')}>DE</button>
+              <button className='language-fa' onClick={() => changeLanguage('fa')}>فارسی</button>
             </div>
-            {menuOpen && (
-              <div className="nav-links-dropdown">
-                {iconNavItems.map((item, index) => (
-                  <a href={item.url} target="_blank" rel="noopener noreferrer" key={index} className="nav-item">
-                    <FontAwesomeIcon icon={item.icon} />
-                  </a>
-                ))}
+            <div className="hamburger-container">
+              <div className="hamburger-menu" onClick={() => { setMenuOpen(!menuOpen); }}>
+                ☰
               </div>
-            )}
-          </div>
+              {menuOpen && (
+                <div className="nav-links-dropdown">
+                  {iconNavItems.map((item, index) => (
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" key={index} className="nav-item">
+                      <FontAwesomeIcon icon={item.icon} />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          
         </div>
         <div className={fadeOut ? "fade-out" : ""}>
           {!newPage && <canvas ref={canvasRef} className="particles-canvas"></canvas>}
         </div>
         <div className={fadeOut ? "fade-out" : ""}>
-        <div className="flex-container">
-            <h1 className={newPage ? 'new-page-description' : ' hidden'}>I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, coding, and the exploration of artificial intelligence. <br/><br/>I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I release both under my <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=IQ7UTJ64Qguk8mN4KRy_4Q' target='_blank'>own name</a>, as well as <a href='https://mani-music.bandcamp.com/' target="_blank">MÁNĪ</a>.
-                <br/><br/>My areas of scholary interest and research include artificial intelligence for creative applciations, music and digital media, music production and also video-game audio and music implimentation.<br/><br/>I hold a Master's degree in Music from Folkwang University of the Arts. I also hold a Machine Learning certificate from <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>Stanford Online</a>, and my skills as a Front-End Developer are certified by <a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>Meta</a>.</h1>
-            
-            <div className="face-container">
+          <div className={newPage ? 'new-page-layout' : ' hidden'}>
+            <div className="flex-container">
+              <h1 className={newPage ? 'new-page-description' : ' hidden'}>I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, coding, and the exploration of artificial intelligence. <br/><br/>I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I release both as <a href='https://mani-music.bandcamp.com/' target="_blank">MÁNĪ</a> as well as under my <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=IQ7UTJ64Qguk8mN4KRy_4Q' target='_blank'>own name</a>.
+                  <br/><br/>My areas of scholary interest and research include: artificial intelligence for creative applciations, music and digital media, music production and also video-game audio and music implimentation.<br/><br/>I hold a Master's degree in Music from Folkwang University of the Arts. I also hold a Machine Learning certificate from <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>Stanford Online</a>, and my skills as a Front-End Developer are certified by <a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>Meta</a>.</h1>
+              <div className="face-container">
                 <h1 ref={photoTextRef} className={newPage ? 'my-face' : ' hidden'} onClick={() => setShowPhoto(!showPhoto)}>Click here to see my face!</h1>
                 {showPhoto && (
-                    <div className="photo-card">
-                        <img src="/src/Misagh_Headshot.png" />
-                    </div>
+                  <div className="photo-card">
+                    <img src="/src/Misagh_Headshot.png" />
+                  </div>
                 )}
+              </div>
             </div>
-        </div>
-
-          <canvas ref={newPageCanvasRef} className={`new-page-canvas${newPage ? '' : ' hidden'}`}></canvas> {/* Render the new page canvas conditionally */}
+            <div className='flex-container-right'>
+              <h1 className="page-links">MUSIC</h1>
+              <h1 className="page-links">VIDEOS</h1>
+              <h1 className="page-links">RESEARCH</h1>
+              <h1 className="page-links">CONTACT</h1>
+            </div>
+          </div>
+          <canvas ref={newPageCanvasRef} className={`new-page-canvas${newPage ? '' : ' hidden'}`}></canvas>
         </div>
       </div>
       <button className="arrow-button" onClick={handleArrowClick}>
@@ -385,7 +413,6 @@ function App() {
       </button>
     </div>
   );
-  
 }
 
 export default App;
