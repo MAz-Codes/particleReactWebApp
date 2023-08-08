@@ -148,19 +148,30 @@ function App() {
 
 
 
-// This function will update canvas dimensions and create a gradient
   const updateCanvasDimensions = (canvasRef, colorStart, colorEnd) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const backgroundGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    
+    const devicePixelRatio = window.devicePixelRatio || 1; // Get device pixel ratio
+    
+    // Adjust the canvas's internal dimensions
+    canvas.width = window.innerWidth * devicePixelRatio;
+    canvas.height = window.innerHeight * devicePixelRatio;
+  
+    // Scale the canvas's context
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+  
+    // The CSS dimensions remain the same, ensuring the canvas fits the screen
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+  
+    const backgroundGradient = ctx.createLinearGradient(0, 0, 0, canvas.height / devicePixelRatio); // Adjust gradient end point
     backgroundGradient.addColorStop(0, colorStart);
     backgroundGradient.addColorStop(1, colorEnd);
     ctx.fillStyle = backgroundGradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, canvas.width / devicePixelRatio, canvas.height / devicePixelRatio); // Adjust fillRect dimensions
   };
+  
 
   const handleClickOutside = (event) => {
     console.log('Clicked element:', event.target);  // Log the clicked element
