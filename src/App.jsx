@@ -408,7 +408,7 @@ function App() {
                 <h1 ref={photoTextRef} className={newPage ? 'my-face' : ' hidden'} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
                 {showPhoto && (
                   <div className="photo-card">
-                    <img src="/src/Misagh_Headshot.png" />
+                    <img src="/Misagh_Headshot.png" />
                   </div>
                 )}
               </div>
