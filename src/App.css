@@ -53,8 +53,9 @@ a:hover {
   color:white !important;
 }
 .flex-container-right {
-  padding-right: 3vh;
-  padding-left: 8%;
+  
+  padding-right: 5vh;
+  padding-left: 1%;
   font-size: calc(min(1.75vh, 1.75vw) + .25vw);
   display: flex;
   flex-direction: column;
@@ -69,15 +70,18 @@ a:hover {
   color: #bdc3c7;
   font-weight: 700;
   text-align: right;
-  overflow-wrap: break-word;
-  overflow-y: auto;
   position: relative;
 }
 
-.page-links{
-margin-top:0;
-padding-top:0;
-transition: transform 0.5s;
+.page-links {
+  display: block;           /* Ensure it behaves as a block-level element */
+  white-space: nowrap;      /* Prevent contents from wrapping */
+        /* Hide any overflow */
+  /* Add an ellipsis if content is too wide */
+  width: 100%;              /* Ensure it takes up the maximum width of the parent */     /* Existing style */
+  margin-top: 0;            /* Existing style */
+  padding-top: 0;           /* Existing style */
+  transition: transform 0.5s; /* Existing style */
 }
 
 
@@ -97,7 +101,7 @@ transition: transform 0.5s;
 
 .my-face{
   color: #bdc3c7;
-  font-size: calc(min(1.75vh, 1vw) + .25vw);
+  font-size: calc(min(1.75vh, 1.75vw) + .25vw);
   opacity: 0;
   z-index:10;
   animation: fadeIn 4s forwards;
@@ -146,6 +150,10 @@ transition: transform 0.5s;
   .header-text-2{
     margin-top: 30vh;
   }
+  .flex-container-right{
+    padding-right:0vh;
+    gap: 3vh;
+  }
 }
 @media (min-width: 1920px) and (min-height: 1080px) {
   .header-text {
@@ -182,10 +190,10 @@ transition: transform 0.5s;
   opacity: 0;
   animation: fadeIn 4s forwards;
   color: #bdc3c7;
-  font-size: calc(min(1.75vh, 1vw) + .25vw);
+  font-size: calc(min(1.75vh, 1.75vw) + .25vw);
   font-weight: 700;
   text-align: left;
-  z-index: 3;
+  z-index: 2;
   overflow-wrap: break-word;
   overflow-y: auto; /* Add vertical scrolling if content exceeds the max-height */
   position: relative; /* If needed, but avoid absolute */
@@ -399,7 +407,7 @@ transition: transform 0.5s;
 .nav-links-dropdown {
   position: absolute; /* Positioning relative to the container */
   top: 100%; /* Positioning just below the hamburger menu */
-  font-size: 30px;
+  font-size: 5vh;
   background-color: transparent;
   display: flex;
   flex-direction: column;

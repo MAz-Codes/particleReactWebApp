@@ -4,8 +4,28 @@
       "lastName": "AZIMI "
     },
     "jobs": {
-      "composer": "/COMPOSER",
-      "developer": "/DEVELOPER",
-      "lecturer": "/LECTURER"
+      "composer": "COMPOSER",
+      "developer": "DEVELOPER",
+      "lecturer": "LECTURER"
+    },
+    "bio": {
+      "one": "I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, coding, and the exploration of artificial intelligence.",
+      "two": "I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I release both as ",
+      "three": "as well as under my ",
+      "mani":"MÂNĪ",
+      "four": "own name",
+      "five": "My areas of scholary interest and research include: artificial intelligence for creative applciations, music and digital media, music production and also video-game audio and music implimentation.",
+      "six": "I hold a Master's degree in Music from Folkwang University of the Arts. I also hold a Machine Learning certificate from ",
+      "stanford":"Stanford Online",
+      "seven": ", and my skills as a Front-End Developer are certified by ",
+      "meta":"Meta",
+      "eight": "And I look like this <-",
+      "faEnd": ""
+    },
+    "links": {
+      "music": "MUSIC <",
+      "video": "VIDEOS <",
+      "research": "RESEARCH <",
+      "contact": "CONTACT <"
     }
 }

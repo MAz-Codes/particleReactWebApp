@@ -148,19 +148,31 @@ function App() {
 
 
 
-  // This function will update canvas dimensions and create a gradient
   const updateCanvasDimensions = (canvasRef, colorStart, colorEnd) => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  const canvas = canvasRef.current;
+  const ctx = canvas.getContext('2d');
+  
+  const devicePixelRatio = window.devicePixelRatio || 1; // Get device pixel ratio
+  const backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
+                            ctx.mozBackingStorePixelRatio ||
+                            ctx.msBackingStorePixelRatio ||
+                            ctx.oBackingStorePixelRatio ||
+                            ctx.backingStorePixelRatio || 1;
+  
+  const ratio = devicePixelRatio / backingStoreRatio;
+  
+  canvas.width = window.innerWidth * ratio;
+  canvas.height = window.innerHeight * ratio;
+  canvas.style.width = `${window.innerWidth}px`;
+  canvas.style.height = `${window.innerHeight}px`;
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-    const backgroundGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    backgroundGradient.addColorStop(0, colorStart);
-    backgroundGradient.addColorStop(1, colorEnd);
-    ctx.fillStyle = backgroundGradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-  };
+  const backgroundGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  backgroundGradient.addColorStop(0, colorStart);
+  backgroundGradient.addColorStop(1, colorEnd);
+  ctx.fillStyle = backgroundGradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
 
   const handleClickOutside = (event) => {
     console.log('Clicked element:', event.target);  // Log the clicked element
@@ -172,7 +184,10 @@ function App() {
     // Check if the clicked element is flex-container-right or its children
     const isFlexContainerRightClicked = event.target.classList.contains('flex-container-right') || event.target.closest('.flex-container-right');
 
-    if (isImageClicked || isNewPageCanvasClicked || isFlexContainerRightClicked) {
+    // Check if the clicked element is new-page-description or its children
+    const isNewPageDescriptionClicked = event.target.classList.contains('new-page-description') || event.target.closest('.new-page-description');
+
+    if (isImageClicked || isNewPageCanvasClicked || isFlexContainerRightClicked || isNewPageDescriptionClicked) {
         setShowPhoto(false);
     }
 
@@ -225,7 +240,7 @@ function App() {
     if (!canvas) return;  
     const ctx = canvas.getContext('2d');
     const particles = [];
-    const particlesCount = window.innerWidth <= 768 ? 70 : 150; // 100 particles for small screens, 300 otherwise
+    const particlesCount = window.innerWidth <= 768 ? 70 : 175; // 100 particles for small screens, 300 otherwise
     const effectRadius = (10 / 100) * window.innerWidth; // 5vw radius
 
     for (let i = 0; i < particlesCount; i++) {
@@ -361,8 +376,8 @@ function App() {
           </div>
           
             <div className='language-buttons'>
-              <button className='language-en' onClick={() => changeLanguage('en')}>EN</button>
-              <button className='language-de' onClick={() => changeLanguage('de')}>DE</button>
+              <button className='language-en' onClick={() => changeLanguage('en')}>EN </button>
+              <button className='language-de' onClick={() => changeLanguage('de')}>DE </button>
               <button className='language-fa' onClick={() => changeLanguage('fa')}>فارسی</button>
             </div>
             <div className="hamburger-container">
@@ -387,10 +402,10 @@ function App() {
         <div className={fadeOut ? "fade-out" : ""}>
           <div className={newPage ? 'new-page-layout' : ' hidden'}>
             <div className="flex-container">
-              <h1 className={newPage ? 'new-page-description' : ' hidden'}>I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, coding, and the exploration of artificial intelligence. <br/><br/>I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I release both as <a href='https://mani-music.bandcamp.com/' target="_blank">MÁNĪ</a> as well as under my <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=IQ7UTJ64Qguk8mN4KRy_4Q' target='_blank'>own name</a>.
-                  <br/><br/>My areas of scholary interest and research include: artificial intelligence for creative applciations, music and digital media, music production and also video-game audio and music implimentation.<br/><br/>I hold a Master's degree in Music from Folkwang University of the Arts. I also hold a Machine Learning certificate from <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>Stanford Online</a>, and my skills as a Front-End Developer are certified by <a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>Meta</a>.</h1>
+              <h1 className={newPage ? 'new-page-description' : ' hidden'}>{t('bio.one')}<br/><br/>{t('bio.two')} <a href='https://mani-music.bandcamp.com/' target="_blank">{t('bio.mani')}</a> {t('bio.three')} <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=IQ7UTJ64Qguk8mN4KRy_4Q' target='_blank'>{t('bio.four')}</a>.
+                  <br/><br/>{t('bio.five')}<br/><br/>{t('bio.six')} <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>{t('bio.stanford')}</a>{t('bio.seven')}<a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>{t('bio.meta')}.</a> {t('bio.faEnd')}</h1>
               <div className="face-container">
-                <h1 ref={photoTextRef} className={newPage ? 'my-face' : ' hidden'} onClick={() => setShowPhoto(!showPhoto)}>Click here to see my face!</h1>
+                <h1 ref={photoTextRef} className={newPage ? 'my-face' : ' hidden'} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
                 {showPhoto && (
                   <div className="photo-card">
                     <img src="/src/Misagh_Headshot.png" />
@@ -399,10 +414,10 @@ function App() {
               </div>
             </div>
             <div className='flex-container-right'>
-              <h1 className="page-links">MUSIC</h1>
-              <h1 className="page-links">VIDEOS</h1>
-              <h1 className="page-links">RESEARCH</h1>
-              <h1 className="page-links">CONTACT</h1>
+              <h1 className="page-links">{t('links.music')}</h1>
+              <h1 className="page-links">{t('links.video')}</h1>
+              <h1 className="page-links">{t('links.research')}</h1>
+              <h1 className="page-links">{t('links.contact')}</h1>
             </div>
           </div>
           <canvas ref={newPageCanvasRef} className={`new-page-canvas${newPage ? '' : ' hidden'}`}></canvas>
