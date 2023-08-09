@@ -9,7 +9,7 @@
       "lecturer": "LECTURER"
     },
     "bio": {
-      "one": "I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, coding, and the exploration of artificial intelligence.",
+      "one": "I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, creative digital technologies, and the exploration of artificial intelligence.",
       "two": "I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I release both as ",
       "three": "as well as under my ",
       "mani":"MÂNĪ",
@@ -19,7 +19,7 @@
       "stanford":"Stanford Online",
       "seven": ", and my skills as a Front-End Developer are certified by ",
       "meta":"Meta",
-      "eight": "And I look like this <-",
+      "eight": "And I look like this <",
       "faEnd": ""
     },
     "links": {
@@ -27,5 +27,10 @@
       "video": "VIDEOS <",
       "research": "RESEARCH <",
       "contact": "CONTACT <"
+    },
+    "arrow": {
+      "me": "ABOUT MY WORK",
+      "play": "IF YOU WANT TO PLAY WITH PARTICLES",
+      "home": "START OVER"
     }
 }

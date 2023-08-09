@@ -27,5 +27,10 @@
       "video": "VIDEOS <",
       "research": "FORSCHUNG <",
       "contact": "KONTAKT <"
+    },
+      "arrow": {
+      "me": "ÜBER MICH",
+      "play": "MIT DEN PARTIKELN SPIELEN",
+      "home": "VON VORNE"
     }
 }
