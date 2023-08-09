@@ -18,7 +18,7 @@
 
 a {
   text-decoration: none;
-  color: white;
+  color: white !important;
 }
 
 a:hover {
@@ -56,18 +56,17 @@ a:hover {
 .music-overlay {
   position: fixed;
   border-radius:30px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top:4%;
+  margin-bottom:4%;
+  margin-left:4%; 
   width: 92%;
   height: 92%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
-
 
 .close-button {
   position: absolute;
@@ -77,7 +76,7 @@ a:hover {
   border: none;
   color: white;
   font-size: 24px;
-  cursor: pointer;
+  cursor: url('hand.png'), pointer;
 }
 .video-close-button{
   position: absolute;
@@ -87,18 +86,18 @@ a:hover {
   border: none;
   color: white;
   font-size: 24px;
-  cursor: pointer;
+  cursor: url('hand.png'), pointer;
 }
 .flex-container-right {
   
   padding-right: 5vh;
   padding-left: 1%;
-  font-size: calc(min(1.75vh, 1.75vw) + .25vw);
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  gap: 5vh;
+  gap: 10vh;
   z-index: 3;
   max-width: 40%;
   max-height: 90vh;
@@ -111,17 +110,15 @@ a:hover {
 }
 
 .page-links {
+  font-size: calc(min(4vh, 4vw) + .25vw);
   display: block;           /* Ensure it behaves as a block-level element */
   white-space: nowrap;      /* Prevent contents from wrapping */
-        /* Hide any overflow */
-  /* Add an ellipsis if content is too wide */
   width: 100%; 
   color: white;             /* Ensure it takes up the maximum width of the parent */     /* Existing style */
   margin-top: 0;            /* Existing style */
   padding-top: 0;           /* Existing style */
   transition: transform 0.5s; /* Existing style */
 }
-
 
 .face-container {
   display: flex;
@@ -132,20 +129,13 @@ a:hover {
   position: relative; /* If needed, but avoid absolute */
   z-index:6;
   color: white;
-font-size: calc(min(.75vh, 1vw) + .25vw);
+  font-size: calc(min(1.75vh, 2vw) + .25vw);
   font-weight: 700;
+}
+
+.face-container:hover{
   cursor: url('hand.png'), pointer;
 }
-
-.my-face{
-  color: #bdc3c7;
-  font-size: calc(min(1.75vh, 1.75vw) + .25vw);
-  opacity: 0;
-  z-index:10;
-  animation: fadeIn 4s forwards;
-  font-weight: 700;
-}
-
 .second-new-page{
   z-index:6;
 }
@@ -159,10 +149,6 @@ font-size: calc(min(.75vh, 1vw) + .25vw);
   opacity: 0;
 }
 
-.my-face:hover{
-  z-index:6;
-  color: white !important;
-}
 .fade-out-canvas {
   animation: fadeOut 1.5s forwards;
 }
@@ -319,7 +305,7 @@ font-size: calc(min(.75vh, 1vw) + .25vw);
     max-width: 100%;
     margin-right: 2vw;
   }
-  .new-page-description, .my-face {
+  .new-page-description,  {
     font-size: calc(min(2vh, 2vw) + .25vw);
   }
   .flex-container-right{
@@ -464,6 +450,7 @@ font-size: calc(min(.75vh, 1vw) + .25vw);
   margin: 0;
   padding: 0;
   text-align: center;
+  color: white;
 }
 .hidden {
   display: none;
@@ -528,9 +515,10 @@ font-size: calc(min(.75vh, 1vw) + .25vw);
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 10px;  /* Adjust the gap between the buttons as needed */
+  gap: 2vw;  /* Adjust the gap between the buttons as needed */
   right:0;
   margin-right: 10vw;
+  font-size: 1.2vw;
   
 }
 .language-en, .language-de, .language-fa{
@@ -548,7 +536,6 @@ font-size: calc(min(.75vh, 1vw) + .25vw);
   cursor: url('hand.png'), pointer;
   font-size: 20px;
   font-weight: bold;
-
 }
 .arrow-button {
   position: absolute;
@@ -562,6 +549,7 @@ font-size: calc(min(.75vh, 1vw) + .25vw);
   color: white;
   outline: none;
   z-index: 4;
+  cursor: url('hand.png'), pointer;
   animation: fadeLogo 1s linear infinite;
 }
 
@@ -585,6 +573,11 @@ font-size: calc(min(.75vh, 1vw) + .25vw);
 
   .nav-links-dropdown a {
     font-size: 20px; /* Reduce the size of the logos in the dropdown menu */
+  }
+  .language-buttons {
+    font-size: 10px;
+    padding-right: 20px;
+    gap: 20px;
   }
 }
 

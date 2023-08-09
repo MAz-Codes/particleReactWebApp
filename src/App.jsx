@@ -172,12 +172,17 @@ function App() {
 
 
   const { t } = useTranslation();
+
   const backgroundCanvasRef = useRef(null);
   const canvasRef = useRef(null);
   const photoTextRef = useRef(null)
   const photoCardRef = useRef(null);
   const secondNewPageCanvasRef = useRef(null);
   const newPageCanvasRef = useRef(null);
+  const musicRef = useRef(null);
+  const videoRef = useRef(null);
+  const researchRef = useRef(null);
+  const contactRef = useRef(null);
 
   const [showMusic, setShowMusic] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -240,7 +245,6 @@ function App() {
 
   const newPageRef = useRef(newPage);
 
-
 // This function will update canvas dimensions and create a gradient
   const updateCanvasDimensions = (canvasRef, colorStart, colorEnd) => {
     const canvas = canvasRef.current;
@@ -256,27 +260,32 @@ function App() {
   };
 
   const handleClickOutside = (event) => {
-    console.log('Clicked element:', event.target);  // Log the clicked element
+    console.log('Clicked element:', event.target);
 
-    // Check if the clicked element is the image or the new-page-canvas
     const isImageClicked = event.target.tagName === 'IMG';
     const isNewPageCanvasClicked = String(event.target.className).includes('new-page-canvas');
-
-    // Check if the clicked element is flex-container-right or its children
     const isFlexContainerRightClicked = event.target.classList.contains('flex-container-right') || event.target.closest('.flex-container-right');
-
-    // Check if the clicked element is new-page-description or its children
     const isNewPageDescriptionClicked = event.target.classList.contains('new-page-description') || event.target.closest('.new-page-description');
-
     if (isImageClicked || isNewPageCanvasClicked || isFlexContainerRightClicked || isNewPageDescriptionClicked) {
         setShowPhoto(false);
     }
 
-    // Existing logic
     if (photoTextRef.current && !photoTextRef.current.contains(event.target) &&
         photoCardRef.current && !photoCardRef.current.contains(event.target)) {
         console.log('Outside of photo text and photo card detected');
         setShowPhoto(false);
+    }
+    if (musicRef.current && !musicRef.current.contains(event.target)) {
+      setShowMusic(false);
+    }
+    if (videoRef.current && !videoRef.current.contains(event.target)) {
+        setShowVideo(false);
+    }
+    if (researchRef.current && !researchRef.current.contains(event.target)) {
+        setShowResearch(false);
+    }
+    if (contactRef.current && !contactRef.current.contains(event.target)) {
+        setShowContact(false);
     }
   };
 
@@ -528,10 +537,10 @@ useEffect(() => {
           <canvas ref={secondNewPageCanvasRef} className={`second-new-page-particles-canvas${shouldFadeSecondPage ? ' fade-out-canvas' : ''}`}></canvas>
           )}
 
-          {showMusic && newPage && <Music style={{ zIndex: 10000, position: 'fixed' }} onClose={() => setShowMusic(false)} />}
-          {showVideo && newPage && <Video style={{ zIndex: 10000, position: 'fixed' }} onCloseVideo={() => setShowVideo(false)} />}
-          {showResearch && newPage && <Research style={{ zIndex: 10000, position: 'fixed' }} onCloseResearch={() => setShowResearch(false)} />}
-          {showContact && newPage && <Contact style={{ zIndex: 10000, position: 'fixed' }} onCloseContact={() => setShowContact(false)} />}
+          {showMusic && newPage && <Music ref={musicRef} style={{ zIndex: 10000, position: 'fixed' }} onClose={() => setShowMusic(false)} />}
+          {showVideo && newPage && <Video ref={videoRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseVideo={() => setShowVideo(false)} />}
+          {showResearch && newPage && <Research ref={researchRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseResearch={() => setShowResearch(false)} />}
+          {showContact && newPage && <Contact ref={contactRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseContact={() => setShowContact(false)} />}
 
 
         {newPage && !secondNewPage && (
