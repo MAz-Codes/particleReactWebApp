@@ -538,7 +538,7 @@ useEffect(() => {
           <canvas ref={secondNewPageCanvasRef} className={`second-new-page-particles-canvas${shouldFadeSecondPage ? ' fade-out-canvas' : ''}`}></canvas>
           )}
 
-          {showMusic && newPage && <Music ref={musicRef} style={{ zIndex: 10000, position: 'fixed' }} onClose={() => setShowMusic(false)} />}
+          {showMusic && newPage && <Music className="fade-in" ref={musicRef} style={{ zIndex: 10000, position: 'fixed' }} onClose={() => setShowMusic(false)} />}
           {showVideo && newPage && <Video ref={videoRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseVideo={() => setShowVideo(false)} />}
           {showResearch && newPage && <Research ref={researchRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseResearch={() => setShowResearch(false)} />}
           {showContact && newPage && <Contact ref={contactRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseContact={() => setShowContact(false)} />}
@@ -553,7 +553,7 @@ useEffect(() => {
                 <h1 className= "face-text" ref={photoTextRef} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
                 {showPhoto && (
                   <div className="photo-card">
-                    <img src="/Misagh_Headshot_new.png" alt="Misagh Headshot"/>
+                    <img src="/src/assets/Misagh_face.jpg" alt="Misagh Headshot"/>
                   </div>
                 )}
               </div>

@@ -46,7 +46,7 @@ a:hover {
   align-items: start;
   max-width: 60%;
   gap: 20px;
-  z-index: 3;
+  z-index: 3; 
 }
 .page-links:hover{
   transform: scale(1.3);
@@ -54,6 +54,8 @@ a:hover {
 }
 
 .music-overlay {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
   position: fixed;
   border-radius:30px;
   margin-top:4%;
@@ -61,7 +63,7 @@ a:hover {
   margin-left:4%; 
   width: 92%;
   height: 92%;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,9 +297,7 @@ a:hover {
   height: auto; /* maintain the aspect ratio */
   margin: 0 auto; /* center the image horizontally */
   display: block; /* make sure the image is a block element for margin to work */
-  border-radius:50vw;
-  filter: grayscale(40%);
-}
+  border-radius:1vw;}
 
 
 .new-page-layout {
