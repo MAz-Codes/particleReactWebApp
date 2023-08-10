@@ -31,8 +31,8 @@ import Abrupt from "/src/assets/Pics/Cover_Abrupt.jpg"
             <Grid  maxH="90%" maxW="90%">
 
             <Box>
-              <Heading fontSize={50} color={"#bdc3c7"}>{t('music.disco')}</Heading>
-              <Text fontSize={30} color={"#bdc3c7"}>{t('music.desc')}</Text>
+              <Heading fontSize={{base:"xl",md: "30", lg: "50"}} color={"#bdc3c7"}>{t('music.disco')}</Heading>
+              <Text fontSize={{base:"sm",md: "15", lg: "30"}} color={"#bdc3c7"}>{t('music.desc')}</Text>
             </Box>
 
             <Box
