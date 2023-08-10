@@ -32,7 +32,7 @@ import Abrupt from "/src/assets/Pics/Cover_Abrupt.jpg"
 
             <Box>
               <Heading fontSize={{base:"xl",md: "30", lg: "50"}} color={"#bdc3c7"}>{t('music.disco')}</Heading>
-              <Text fontSize={{base:"sm",md: "15", lg: "30"}} color={"#bdc3c7"}>{t('music.desc')}</Text>
+              <Text fontSize={{base:"xs",md: "15", lg: "30"}} color={"#bdc3c7"}>{t('music.desc')}</Text>
             </Box>
 
             <Box

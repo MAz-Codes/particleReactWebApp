@@ -576,7 +576,7 @@ useEffect(() => {
         )}
         {secondNewPage && (
           <div className='second-new-page'>
-            <h1>hi</h1>
+            <h1></h1>
           </div>
         )}
         <div className="navbar">

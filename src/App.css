@@ -255,7 +255,7 @@ a:hover {
   opacity: 0;
   animation: fadeIn 4s forwards;
   color: #bdc3c7;
-  font-size: calc(min(1.75vh, 1.75vw) + .25vw);
+  font-size: calc(min(1.75vh, 2.75vw) + .35vw);
   font-weight: 700;
   text-align: left;
   z-index: 2;
@@ -324,7 +324,7 @@ a:hover {
     margin-right: 2vw;
   }
   .new-page-description,  {
-    font-size: calc(min(2vh, 2vw) + .25vw);
+    font-size: calc(min(2.5vh, 2.5vw) + 2.25vw);
   }
   .flex-container-right{
     max-width: 100%;
