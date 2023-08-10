@@ -20,7 +20,7 @@
       "seven": ", and my skills as a Front-End Developer are certified by ",
       "meta":"Meta",
       "eight": "And I look like this <",
-      "faEnd": ""
+      "faEnd": "I made this website using React and Vite.js!"
     },
     "links": {
       "music": "MUSIC <",
@@ -32,5 +32,9 @@
       "me": "ABOUT MY WORK",
       "play": "IF YOU WANT TO PLAY WITH PARTICLES",
       "home": "START OVER"
+    },
+    "music": {
+      "disco": "DISCOGRAPHY",
+      "desc":"MUSIC (CO)WRITTEN AND PRODUCED BY ME"
     }
 }

@@ -32,5 +32,10 @@
       "me": "ÜBER MICH",
       "play": "MIT DEN PARTIKELN SPIELEN",
       "home": "VON VORNE"
+    },
+    "music": {
+      "disco": "Diskographie",
+      "desc":"VON MIR GEASCHRIEBENE UND PRODUZIERTE MUSIK"
     }
+    
 }

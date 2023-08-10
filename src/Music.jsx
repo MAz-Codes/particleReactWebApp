@@ -2,6 +2,8 @@ import React, { forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faBandcamp, faSpotify, faItunesNote } from '@fortawesome/free-brands-svg-icons';
+import i18n from "/src/i18n.jsx"
+import { useTranslation } from 'react-i18next';
 
 import {Divider, Tag, Box, Grid, Card, Stack, CardBody, CardFooter, Image, Heading, Text, VStack, ButtonGroup, Button } from '@chakra-ui/react'
 import BlackHoles from "/src/assets/Pics/Cover_Black_Holes.png"
@@ -17,7 +19,9 @@ import Ma from "/src/assets/Pics/Cover_Ma.jpeg"
 import Abrupt from "/src/assets/Pics/Cover_Abrupt.jpg"
 
 
-const Music = forwardRef((props, ref) => {
+  const Music = forwardRef((props, ref) => {
+  const { t } = useTranslation();
+
     return (
         <div ref={ref} className="music-overlay">
             <button className="close-button" onClick={props.onClose}>
@@ -27,8 +31,8 @@ const Music = forwardRef((props, ref) => {
             <Grid  maxH="90%" maxW="90%">
 
             <Box>
-              <Heading fontSize={50} color={"#bdc3c7"}>DISCOGRAPHY</Heading>
-              <Text fontSize={30} color={"#bdc3c7"}>MUSIC (CO)WRITTEN AND PRODUCED BY ME</Text>
+              <Heading fontSize={50} color={"#bdc3c7"}>{t('music.disco')}</Heading>
+              <Text fontSize={30} color={"#bdc3c7"}>{t('music.desc')}</Text>
             </Box>
 
             <Box
