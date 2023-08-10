@@ -66,6 +66,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow-y: auto;
 }
 
 .close-button {
@@ -77,6 +78,19 @@ a:hover {
   color: white;
   font-size: 24px;
   cursor: url('hand.png'), pointer;
+}
+.all-bandcamp{
+  cursor: url('handDark.png'), pointer;
+  color: #1da0c3;
+}
+.all-spotify{
+  cursor: url('handDark.png'), pointer;
+  color: #24d760;
+}
+
+.all-apple{
+  cursor: url('handDark.png'), pointer;
+  color: #fa3850
 }
 .video-close-button{
   position: absolute;
@@ -121,6 +135,7 @@ a:hover {
 }
 
 .face-container {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -272,6 +287,7 @@ a:hover {
   background-color: transparent; /* Adjust color as needed */
   padding: 20px; /* Adjust padding as needed */
   z-index: 10; /* Positioning above other elements */
+
 }
 
 .photo-card img {
@@ -279,6 +295,8 @@ a:hover {
   height: auto; /* maintain the aspect ratio */
   margin: 0 auto; /* center the image horizontally */
   display: block; /* make sure the image is a block element for margin to work */
+  border-radius:50vw;
+  filter: grayscale(40%);
 }
 
 

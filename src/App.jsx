@@ -11,6 +11,7 @@ import Video from './Video';
 import Research from './Research';
 import Contact from './Contact';
 
+
 //Web particle system for front page
 class Particle {
   constructor(x, y, size) {
@@ -90,7 +91,7 @@ class NewPageParticle {
   }
 
   draw(ctx) {
-    ctx.strokeStyle = 'gray';
+    ctx.strokeStyle = 'white';
     ctx.lineWidth = 2; 
     ctx.save(); // Save the current state of the context
     ctx.translate(this.x, this.y); // Change the origin to the particle's center
@@ -549,7 +550,7 @@ useEffect(() => {
               <h1 className='new-page-description'>{t('bio.one')}<br/><br/>{t('bio.two')} <a href='https://mani-music.bandcamp.com/' target="_blank">{t('bio.mani')}</a> {t('bio.three')} <a href='ssp' target='_blank'>{t('bio.four')}</a>.
                   <br/><br/>{t('bio.five')}<br/><br/>{t('bio.six')} <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>{t('bio.stanford')}</a>{t('bio.seven')}<a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>{t('bio.meta')}.</a> {t('bio.faEnd')}</h1>
               <div className="face-container">
-                <h1 ref={photoTextRef} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
+                <h1 className= "face-text" ref={photoTextRef} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
                 {showPhoto && (
                   <div className="photo-card">
                     <img src="/Misagh_Headshot_new.png" alt="Misagh Headshot"/>
