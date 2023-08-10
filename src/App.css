@@ -533,10 +533,10 @@ a:hover {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 2vw;  /* Adjust the gap between the buttons as needed */
+  gap: 1.5vw;  /* Adjust the gap between the buttons as needed */
   right:0;
   margin-right: 10vw;
-  font-size: 1.2vw;
+  font-size: 1vw;
   
 }
 .language-en, .language-de, .language-fa{
