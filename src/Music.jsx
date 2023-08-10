@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import {Divider, Tag, Box, Grid, Card, Stack, CardBody, CardFooter, Image, Heading, Text, VStack, ButtonGroup, Button } from '@chakra-ui/react'
 import BlackHoles from "/src/assets/Pics/Cover_Black_Holes.png"
 import BlackWater from "/src/assets/Pics/Cover_Black_Water.jpg"
-import Vier from "/src/assets/Pics/Cover_Vier.jpg"
+import Vier from "/src/assets/Pics/Cover_VIER.jpg"
 import CruelSanity from "/src/assets/Pics/Cover_Cruel.jpg"
 import Hideous from "/src/assets/Pics/Cover_Hideous.jpg"
 import Grebe from "/src/assets/Pics/Cover_Grebe.jpeg"
