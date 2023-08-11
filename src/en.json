@@ -36,5 +36,9 @@
     "music": {
       "disco": "DISCOGRAPHY",
       "desc":"MUSIC (CO)WRITTEN AND PRODUCED BY ME"
+    },
+    "video":{
+      "disco": "VIDEOS",
+      "desco": "MULTI-CHANNEL VIDEOS, MUSIC VIDEOS, FILMS, AND ANIMATIONS"
     }
 }

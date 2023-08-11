@@ -36,6 +36,10 @@
     "music": {
       "disco": "Diskographie",
       "desc":"VON MIR GEASCHRIEBENE UND PRODUZIERTE MUSIK"
+    },
+    "video":{
+      "disco": "VIDEOS",
+      "desco": "MULTI-KANAL VIDEOS, MUSIKVIDEOS, FILME UND ANIMATIONEN"
     }
     
 }

@@ -5,7 +5,7 @@ import { faBandcamp, faSpotify, faItunesNote } from '@fortawesome/free-brands-sv
 import i18n from "/src/i18n.jsx"
 import { useTranslation } from 'react-i18next';
 
-import {Divider, Tag, Box, Grid, Card, Stack, CardBody, CardFooter, Image, Heading, Text, VStack, ButtonGroup, Button } from '@chakra-ui/react'
+import {Divider, Box, Grid, Card, Stack, CardBody, CardFooter, Image, Heading, Text, VStack, ButtonGroup, Button } from '@chakra-ui/react'
 import BlackHoles from "/src/assets/Pics/Cover_Black_Holes.png"
 import BlackWater from "/src/assets/Pics/Cover_Black_Water.jpg"
 import Vier from "/src/assets/Pics/Cover_VIER.jpg"
