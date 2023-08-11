@@ -64,7 +64,7 @@ const Video = forwardRef((props, ref) => {
         {id: "10",
         src: "/src/assets/Pics/Video_Inmotion.png",
         url: 'https://vimeo.com/99226746',
-        title: "Outside",
+        title: "Inmotion",
         descrition: "2014 | I composed and produced the music for this award winning video by Simon Baucks."
         },
     ]
