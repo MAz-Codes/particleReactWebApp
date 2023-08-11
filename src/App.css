@@ -57,7 +57,7 @@ a:hover {
   opacity: 0;
   animation: fadeIn 1s forwards;
   position: fixed;
-  border-radius:30px;
+  border-radius:10px;
   margin-top:4%;
   margin-bottom:4%;
   margin-left:4%; 
@@ -308,7 +308,7 @@ a:hover {
   z-index: 3;
   margin-right: 2vw;
   margin-left: 5vw;
-  margin-top: 19vh;
+  margin-top: calc(8vh + 5vw);
 }
 
 /* NEW PAGE MOBILE */
@@ -319,6 +319,7 @@ a:hover {
     align-items: center;
     max-height: calc(100vh - 100px);
   }
+
   .flex-container {
     max-width: 100%;
     margin-right: 2vw;
@@ -338,6 +339,20 @@ a:hover {
     font-size: calc(min(2vh, 2vw) + .25vw);
   }
 }
+.phone-container {
+
+  position: fixed;
+  justify-content: center; /* horizontally centers children */
+  align-items: center;     /* vertically centers children */
+top:50%;
+left:25%;
+width:50%;
+font-size:large;
+text-align: center;
+background-color:"white"
+
+}
+
 
 .App.hidden {
   visibility: hidden;

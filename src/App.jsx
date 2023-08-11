@@ -311,13 +311,27 @@ function App() {
   }
   };
 
+  //checking if the device is a touch cell, because of the second page particle games
+  const isCellphone = () => {
+    const widthThreshold = 768;
+    const userAgent = navigator.userAgent;
+  
+    const mobileKeywords = [
+      'Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows Phone'
+    ];
+  
+    if (window.innerWidth <= widthThreshold) {
+      return mobileKeywords.some(keyword => userAgent.includes(keyword));
+    }
+    return false;
+  };
 
 
-useEffect(() => {
-  if (frontPage) {
-      handleWindowResize();
-  }
-}, [frontPage]);
+  useEffect(() => {
+    if (frontPage) {
+        handleWindowResize();
+    }
+  }, [frontPage]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -534,10 +548,15 @@ useEffect(() => {
             </div>
           </div>
         )}
+          <div className="phone-container">
+  {secondNewPage && isCellphone() && (
+    <div className="mobile-joke">You are not enjoying this, because you are on your phone/tablet. Change to a desktop!</div>
+  )}
+</div>
           {secondNewPage && (
           <canvas ref={secondNewPageCanvasRef} className={`second-new-page-particles-canvas${shouldFadeSecondPage ? ' fade-out-canvas' : ''}`}></canvas>
           )}
-
+        
           {showMusic && newPage && <Music className="fade-in" ref={musicRef} style={{ zIndex: 10000, position: 'fixed' }} onClose={() => setShowMusic(false)} />}
           {showVideo && newPage && <Video ref={videoRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseVideo={() => setShowVideo(false)} />}
           {showResearch && newPage && <Research ref={researchRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseResearch={() => setShowResearch(false)} />}
