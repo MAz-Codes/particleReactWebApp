@@ -10,6 +10,8 @@ import Music from './Music';
 import Video from './Video';
 import Research from './Research';
 import Contact from './Contact';
+import CookieBanner from './CookieBanner';
+
 
 
 //Web particle system for front page
@@ -171,7 +173,6 @@ const iconNavItems = [
 
 function App() {
 
-
   const { t } = useTranslation();
 
   const backgroundCanvasRef = useRef(null);
@@ -185,6 +186,7 @@ function App() {
   const researchRef = useRef(null);
   const contactRef = useRef(null);
 
+  const [showCookieBanner, setShowCookieBanner] = useState(true);
   const [showMusic, setShowMusic] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showResearch, setShowResearch] = useState(false);
@@ -290,7 +292,6 @@ function App() {
     }
   };
 
-
   const handleWindowResize = () => {
   const colorStart = isDarkMode ? '#141d28' : '#334c6c';
   const colorEnd = isDarkMode ? '#936d67' : '#ad817a';
@@ -315,17 +316,24 @@ function App() {
   const isCellphone = () => {
     const widthThreshold = 768;
     const userAgent = navigator.userAgent;
-  
+
     const mobileKeywords = [
       'Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows Phone'
     ];
-  
+
     if (window.innerWidth <= widthThreshold) {
       return mobileKeywords.some(keyword => userAgent.includes(keyword));
     }
     return false;
   };
 
+//local stoprage for cookie consent 
+  useEffect(() => {
+    const choice = localStorage.getItem('cookieChoice');
+    if (choice === 'accepted' || choice === 'declined') {
+      setShowCookieBanner(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (frontPage) {
@@ -533,7 +541,9 @@ function App() {
   return (
     <div className="page-container">
       <canvas ref={backgroundCanvasRef} className="background-canvas"></canvas>
+      
       <div className={`App${menuOpen ? " menu-open" : ""}`}>
+
         {frontPage && (
           <div className={fadeOut ? "fade-out" : ""}>
             <div className="header-container">
@@ -542,6 +552,20 @@ function App() {
             </div>
             <div className={isDarkMode ? 'dark-mode' : ''}>
               <h1 className="description-text">{t('jobs.composer')}<br/>{t('jobs.developer')}<br/>{t('jobs.lecturer')}</h1>
+              {
+  showCookieBanner && (
+    <CookieBanner className="cookie-banner"
+      onAccept={() => {
+        setShowCookieBanner(false);
+        localStorage.setItem('cookieChoice', 'accepted');
+      }}
+      onDecline={() => {
+        window.location.href = "https://google.com";
+        localStorage.setItem('cookieChoice', 'declined');
+      }}
+    />
+  )
+}
             </div>
             <div className={`${!newPage || (newPage && !secondNewPage) ? "" : "fade-out"}`}>
                 <canvas ref={canvasRef} className="particles-canvas"></canvas>
@@ -556,7 +580,7 @@ function App() {
           {secondNewPage && (
           <canvas ref={secondNewPageCanvasRef} className={`second-new-page-particles-canvas${shouldFadeSecondPage ? ' fade-out-canvas' : ''}`}></canvas>
           )}
-        
+
           {showMusic && newPage && <Music className="fade-in" ref={musicRef} style={{ zIndex: 10000, position: 'fixed' }} onClose={() => setShowMusic(false)} />}
           {showVideo && newPage && <Video ref={videoRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseVideo={() => setShowVideo(false)} />}
           {showResearch && newPage && <Research ref={researchRef} style={{ zIndex: 10000, position: 'fixed' }} onCloseResearch={() => setShowResearch(false)} />}

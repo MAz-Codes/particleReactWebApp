@@ -52,6 +52,14 @@ a:hover {
   transform: scale(1.3);
   cursor: url('hand.png'), pointer;
 }
+.icon-hover:hover{
+  cursor: url('hand.png'), pointer;
+}
+
+.cookie-banner {
+  z-index: 4;
+  position: relative;
+}
 
 .music-overlay {
   opacity: 0;
@@ -349,7 +357,6 @@ left:25%;
 width:50%;
 font-size:large;
 text-align: center;
-background-color:"white"
 
 }
 
