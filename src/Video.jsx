@@ -2,13 +2,13 @@ import React, { forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faPlay } from '@fortawesome/free-solid-svg-icons';
 import {Heading, Text, Box, Grid, Image, useBreakpointValue, IconButton } from '@chakra-ui/react';
-
+import Outside from "/src/assets/Pics/Video_Outside.png"
 
 const Video = forwardRef((props, ref) => {
 
     const infos= [
         {id: "1",
-        src: "/src/assets/Pics/Video_Outside.png",
+        src: Outside,
         url: 'https://youtu.be/JTzOsqDAvQM',
         title: "Outside",
         descrition: "2023 | Music Video made by prompting into a generative AI video tool"

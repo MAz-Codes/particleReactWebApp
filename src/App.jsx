@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import logo from '../public/newMisaghLogo.png';
+import Face from "/src/assets/Misagh_face.jpg"
 import { useTranslation } from 'react-i18next';
 import i18n from "/src/i18n.jsx"
 import Music from './Music';
@@ -596,7 +597,7 @@ function App() {
                 <h1 className= "face-text" ref={photoTextRef} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
                 {showPhoto && (
                   <div className="photo-card">
-                    <img src="/src/assets/Misagh_face.jpg" alt="Misagh Headshot"/>
+                    <img src={Face} alt="Misagh Headshot"/>
                   </div>
                 )}
               </div>

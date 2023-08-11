@@ -19,10 +19,10 @@ const CookieBanner = ({ onAccept, onDecline }) => {
         >
             <Text mb={4}>I use cookies to enhance your experience.</Text>
             <Box >
-                <Button onClick={onAccept} mr="2" colorScheme="teal">
+                <Button onClick={onAccept} mr="2" colorScheme="green">
                     Accept
                 </Button>
-                <Button onClick={onDecline} ml="2" variant="outline" colorScheme="red">
+                <Button onClick={onDecline} ml="2" colorScheme="red">
                     Decline
                 </Button>
             </Box>
