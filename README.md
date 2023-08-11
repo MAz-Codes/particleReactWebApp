@@ -1,4 +1,4 @@
-# particleReactWebApp
+# React App with Particle System
 
 ## Introduction
 
@@ -47,7 +47,7 @@ I've embraced FontAwesome icons for a richer user experience, and there's a neat
 react: The backbone of this project.
 react-i18next: Empowering the multi-language feature.
 @fortawesome/react-fontawesome and related sets: For those pretty icons you see.
-Chakra UI was used in some pages, although the majority of the app is made with vanilla CSS.
+Chakra UI was used in some pages, although the majority of the app is made with vanilla CSS. BTW the CSS is very messy. I will clean it up soon.
 
 ## Navigating My App
 
