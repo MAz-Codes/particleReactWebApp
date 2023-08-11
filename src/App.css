@@ -347,6 +347,7 @@ a:hover {
     font-size: calc(min(2vh, 2vw) + .25vw);
   }
 }
+
 .phone-container {
 
   position: fixed;
