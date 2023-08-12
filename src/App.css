@@ -499,10 +499,10 @@ text-align: center;
 .nav-links-dropdown {
   position: absolute; /* Positioning relative to the container */
   top: 100%; /* Positioning just below the hamburger menu */
-  font-size: 5vh;
+  font-size: calc(min(3vh, 3vw) + .25vw);;
   background-color: transparent;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   opacity: 0;
   visibility: hidden;
   gap: 10px;

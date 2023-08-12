@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faBandcamp, faSpotify, faItunesNote } from '@fortawesome/free-brands-svg-icons';
-import i18n from "/src/i18n.jsx"
 import { useTranslation } from 'react-i18next';
 
 import {Divider, Box, Grid, Card, Stack, CardBody, CardFooter, Image, Heading, Text, VStack, ButtonGroup, Button } from '@chakra-ui/react'

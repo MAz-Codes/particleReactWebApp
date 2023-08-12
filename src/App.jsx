@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faYoutube, faVimeoV, faSpotify, faBandcamp, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import logo from '../public/newMisaghLogo.png';
 import Face from "/src/assets/Misagh_face.jpg"
 import { useTranslation } from 'react-i18next';
@@ -170,6 +170,7 @@ const iconNavItems = [
   { icon: faYoutube, url: 'https://www.youtube.com/results?search_query=mânī' },
   { icon: faVimeoV, url: 'https://vimeo.com/user29170569' },
   { icon: faLinkedin, url: 'www.linkedin.com/in/misagh-azimi' },
+  { icon: faInstagram, url: 'https://www.instagram.com/_manimusic_/?hl=en'},
 ];
 
 function App() {
