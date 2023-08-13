@@ -9,7 +9,7 @@ const Research = forwardRef((props, ref) => {
     const { t } = useTranslation();
     return (
         <div ref={ref} className="music-overlay">
-            <button className="close-button" onClick={props.onCloseVideo}>
+            <button className="close-button" onClick={props.onCloseResearch}>
                 <FontAwesomeIcon icon={faTimes} />
             </button>
 
