@@ -592,7 +592,7 @@ function App() {
         {newPage && !secondNewPage && (
           <div className={`new-page-layout${fadeOut ? " fade-out" : ""}`}>
             <div className="flex-container">
-              <h1 className='new-page-description'>{t('bio.one')}<br/><br/>{t('bio.two')} <a href='https://mani-music.bandcamp.com/' target="_blank">{t('bio.mani')}</a> {t('bio.three')} <a href='ssp' target='_blank'>{t('bio.four')}</a>.
+              <h1 className='new-page-description'>{t('bio.one')}<br/><br/>{t('bio.two')} <a href='https://mani-music.bandcamp.com/' target="_blank">{t('bio.mani')}</a> {t('bio.three')} <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=apIhj5-RSXOFcBVTa6WvOA' target='_blank'>{t('bio.four')}</a>.
                   <br/><br/>{t('bio.five')}<br/><br/>{t('bio.six')} <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>{t('bio.stanford')}</a>{t('bio.seven')}<a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>{t('bio.meta')}.</a> {t('bio.faEnd')}</h1>
               <div className="face-container">
                 <h1 className= "face-text" ref={photoTextRef} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
