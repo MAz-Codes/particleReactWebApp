@@ -22,61 +22,61 @@ import { useTranslation } from 'react-i18next';
         src: Outside,
         url: 'https://youtu.be/JTzOsqDAvQM',
         title: "Outside",
-        descrition: "2023 | Music Video made by prompting into a generative AI video tool"
+        descrition: t('video.outside')
         },
         {id: "2",
         src: Verloren,
         url: 'https://vimeo.com/720722113',
         title: "Die Verlorenen",
-        descrition: "2023 | A film I composed the music for, directed by Simon Baucks"
+        descrition: t('video.verloren')
         },
         {id: "3",
         src: Water,
         url: 'https://youtu.be/TNUYNVULggw',
         title: "Black Water",
-        descrition: "2019 | Music Video GETIER's Single"
+        descrition: t('video.water')
         },
         {id: "4",
         src: Hideous,
         url: 'https://youtu.be/wA12-VgHd9o',
         title: "Hideous",
-        descrition: "2018 | Music Video GETIER's Single, made by Rebecca ter Braak and Nico Kleemann"
+        descrition: t('video.hideous')
         },
         {id: "5",
         src: Holes,
         url: 'https://youtu.be/-fnmWY0UJp8',
         title: "Black Holes",
-        descrition: "2017 | Directed by Simon Baucks"
+        descrition: t('video.holes')
         },
         {id: "6",
         src: Diaries,
         url: 'https://vimeo.com/190782870',
         title: "Panic Driven Diaries",
-        descrition: "2016 | 3 channel video with 4 audio channels made using Cinema 4D"
+        descrition: t('video.panic')
         },
         {id: "7",
         src: Krumm,
         url: 'https://vimeo.com/179872714',
         title: "Krumm ist der Pfad",
-        descrition: "2016 | 2 channel video 4 channel audio"
+        descrition: t('video.krumm')
         },
         {id: "8",
         src: SUM,
         url: 'https://youtu.be/JTzOsqDAvQM',
         title: "IIISUM",
-        descrition: "2015 | This 3 channel video piece was premiered during the NOW! Festival."
+        descrition: t('video.sum')
         },
         {id: "9",
         src: CAN,
         url: 'https://vimeo.com/99407831',
         title: "C.A.N",
-        descrition: "2014 | C.A.N was made after many beers."
+        descrition: t('video.can')
         },
         {id: "10",
         src: Inmotion,
         url: 'https://vimeo.com/99226746',
         title: "Inmotion",
-        descrition: "2014 | I composed and produced the music for this award winning video by Simon Baucks."
+        descrition: t('video.inmotion')
         },
     ]
 
@@ -135,8 +135,8 @@ import { useTranslation } from 'react-i18next';
                                         </Box>
                                     
                                 </Box>
-                                <Text ml="1vw" mt="1vw" fontSize={{ base: "xl", md: "25", lg: "28", xl: "32" }} fontWeight="bold" textAlign="left">{info.title}</Text>
-                                <Text my={"1vw"} ml="1vw" fontSize={{ base: "md", md: "15", lg: "17", xl: "20" }} textAlign="left">{info.descrition}</Text>
+                                <Text mx="1vw" mt="1vw" fontSize={{ base: "xl", md: "25", lg: "28", xl: "32" }} fontWeight="bold" textAlign="left">{info.title}</Text>
+                                <Text my={"1vw"} mx="1vw" fontSize={{ base: "md", md: "15", lg: "17", xl: "20" }} textAlign="left">{info.descrition}</Text>
                             </Box>
                         ))}
                     </Grid>

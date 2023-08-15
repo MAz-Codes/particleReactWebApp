@@ -9,8 +9,8 @@
       "lecturer": "AKADEMIKER"
     },    
     "bio": {
-      "one": "Ich bin Misagh Azimi, ein deutsch-iranischer Künstler und Akademiker. In meiner facettenreichen Arbeit vertiefe ich mich in Musikkomposition, kreative digitale Technologien und die Erforschung künstlicher Intelligenz.",
-      "two": "Ich komponiere hauptsächlich für darstellende Künste und visuelle Medien wie Theater, zeitgenössischen Tanz oder Kurzfilme. Als Musiker veröffentliche ich sowohl als ",
+      "one": "Ich bin Misagh Azimi, ein deutsch-iranischer Künstler und Akademiker. In meiner facettenreichen Arbeit vertiefe ich mich in Kreation der Musik und die Erforschung kreativer digitalen Technologien.",
+      "two": "Ich komponiere hauptsächlich für darstellende Künste und visuelle Medien wie Theater, zeitgenössischen Tanz oder Kurzfilme. Als Musiker produziere und veröffentliche ich sowohl als ",
       "three": "als auch unter meinem ",
       "mani":"MÂNĪ",
       "four": "eigenen Namen",
@@ -37,9 +37,102 @@
       "disco": "Diskographie",
       "desc":"VON MIR GEASCHRIEBENE UND PRODUZIERTE MUSIK"
     },
-    "video":{
+    "video": {
       "disco": "VIDEOS",
-      "desco": "MULTI-KANAL VIDEOS, MUSIKVIDEOS, FILME UND ANIMATIONEN"
+      "desco": "MEHRKANAL-VIDEOS, MUSIKVIDEOS, FILME UND ANIMATIONEN",
+      "outside": "2023 | Musikvideo erstellt mit einem generativen KI-Videotool",
+      "verloren": "2023 | Ein Film, für den ich die Musik komponiert habe, Regie führte Simon Baucks",
+      "water": "2019 | Musikvideo zur Single von GETIER. Mit Minju Kim",
+      "hideous": "2018 | Musikvideo zur Single von GETIER, von Rebecca ter Braak und Nico Kleemann",
+      "holes": "2017 | Regie: Simon Baucks. Mit Yi An Chen und Constantin Leonhard",
+      "panic": "2016 | 3-Kanal-Video mit 4 Audio-Kanälen, erstellt mit Cinema 4D und Ferrofluid",
+      "krumm": "2016 | 2-Kanal-Video 4-Kanal-Audio",
+      "sum": "2015 | Dieses 3-Kanal-Video wurde während des NOW! Festivals uraufgeführt.",
+      "can": "2014 | C.A.N wurde nach vielen Bieren erstellt.",
+      "inmotion": "2014 | Ich habe die Musik für dieses preisgekrönte Video von Simon Baucks komponiert und produziert."
+    },
+    "contact": {
+        "title": "KONTAKT UND IMPRESSUM",
+        "touch": "KONTAKT AUFNEHMEN",
+        "callme": "Ich bin stets daran interessiert, neue Zusammenarbeiten zu erkunden, sei es künstlerisch motiviert oder im akademischen Bereich. Meine Leidenschaft liegt darin, Kreativität mit Wissen zu verbinden und die Grenzen des Möglichen zu erweitern. Zögern Sie nicht, mich zu kontaktieren.",
+        "data": "DATEN UND DIESE WEBSITE",
+        "person": "Diese Website und ihre Inhalte wurden von Misagh Azimi entworfen und gepflegt.",
+        "coded": "Ich habe diese Website mit React programmiert, mit Vite.js erstellt und auf Netlify veröffentlicht. Den Code finden Sie ",
+        "here": "hier",
+        "cookie": "Ich verwende Cookies. Wenn Sie Social-Media-Funktionen nutzen oder auf externe Seiten klicken, werden diese Sie verfolgen. Ich sammle, verfolge, verarbeite oder verkaufe keine Ihrer persönlichen Daten selbst.",
+        "eu": "EU-DATENSCHUTZERKLÄRUNG",
+        "policy": "Diese Cookie-Richtlinie wurde zuletzt am 7. Juni 2023 aktualisiert und gilt für Bürger und dauerhafte Einwohner des Europäischen Wirtschaftsraums und der Schweiz.",
+        "introduction": {
+            "title": "1. Einleitung",
+            "content": "Meine Website, https://misaghazimi.com (im Folgenden: 'die Website') verwendet Cookies und andere verwandte Technologien (zum Zweck der Vereinfachung werden alle Technologien als 'Cookies' bezeichnet). Cookies werden auch von von uns beauftragten Dritten platziert. Im folgenden Dokument informieren wir Sie über die Verwendung von Cookies auf unserer Website."
+        },
+        "whatAreCookies": {
+            "title": "2. Was sind Cookies?",
+            "content": "Ein Cookie ist eine kleine einfache Datei, die zusammen mit Seiten dieser Website gesendet und von Ihrem Browser auf der Festplatte Ihres Computers oder eines anderen Geräts gespeichert wird. Die darin gespeicherten Informationen können bei einem späteren Besuch an unsere Server oder an die Server der betreffenden Dritten zurückgesendet werden."
+        },
+        "whatAreScripts": {
+            "title": "3. Was sind Skripte?",
+            "content": "Ein Skript ist ein Stück Programmcode, das verwendet wird, um unsere Website ordnungsgemäß und interaktiv funktionieren zu lassen. Dieser Code wird auf unserem Server oder auf Ihrem Gerät ausgeführt."
+        },
+        "whatIsWebBeacon": {
+            "title": "4. Was ist ein Web-Beacon?",
+            "content": "Ein Web-Beacon (oder ein Pixel-Tag) ist ein kleines, unsichtbares Stück Text oder Bild auf einer Website, das verwendet wird, um den Verkehr auf einer Website zu überwachen. Um dies zu tun, werden verschiedene Daten über Sie mit Web-Beacons gespeichert."
+        },
+        "cookies": {
+            "title": "5. Cookies",
+            "technicalOrFunctional": {
+                "title": "5.1 Technische oder funktionale Cookies",
+                "content": "Einige Cookies stellen sicher, dass bestimmte Teile der Website ordnungsgemäß funktionieren und dass Ihre Benutzereinstellungen bekannt bleiben. Durch das Setzen funktionaler Cookies erleichtern wir Ihnen den Besuch unserer Website. So müssen Sie nicht wiederholt dieselben Informationen eingeben, wenn Sie unsere Website besuchen, und Artikel bleiben beispielsweise in Ihrem Warenkorb, bis Sie bezahlt haben. Wir können diese Cookies ohne Ihre Zustimmung setzen."
+            },
+            "marketingOrTracking": {
+                "title": "5.2 Marketing-/Tracking-Cookies",
+                "content": "Marketing-/Tracking-Cookies sind Cookies oder andere Formen der lokalen Speicherung, die verwendet werden, um Benutzerprofile zu erstellen und Werbung anzuzeigen oder den Benutzer auf dieser Website oder über mehrere Websites hinweg aus ähnlichen Marketingzwecken zu verfolgen."
+            }
+        },
+        "placedCookies": {
+            "title": "6. Platzierte Cookies",
+            "items": {
+                "one": "Statistik (anonym)",
+                "two": "Google Fonts",
+                "three": "Marketing/Tracking",
+                "four": "Zustimmung zum Dienst Google-Fonts",
+                "five": "Vimeo",
+                "six": "Statistik",
+                "seven": "Zustimmung zum Dienst Vimeo",
+                "eight": "YouTube",
+                "nine": "Marketing/Tracking, Funktionell",
+                "ten": "Zustimmung zum Dienst YouTube",
+                "eleven": "Verschiedenes",
+                "twelve": "Zweck noch in Untersuchung",
+                "thirteen": "Zustimmung zum Dienst Verschiedenes"
+            }
+        },
+        "consent": {
+            "title": "7. Zustimmung",
+            "content": "Wenn Sie unsere Website zum ersten Mal besuchen, zeigen wir Ihnen ein Pop-up mit einer Erklärung zu Cookies. Sobald Sie auf \"Einstellungen speichern\" klicken, stimmen Sie zu, dass wir die in dem Pop-up ausgewählten Kategorien von Cookies und Plug-ins verwenden, wie in dieser Cookie-Richtlinie beschrieben. Sie können die Verwendung von Cookies über Ihren Browser deaktivieren, beachten Sie jedoch, dass unsere Website möglicherweise nicht mehr ordnungsgemäß funktioniert.",
+            "manageYourConsentSettings": {
+                "title": "7.1 Verwalten Ihrer Zustimmungseinstellungen",
+                "items": {
+                    "one": "Funktional",
+                    "two": "Immer aktiv",
+                    "three": "Statistik",
+                    "four": "Marketing"
+                }
+            }
+        },
+        "enableDisableDeleteCookies": {
+          "title": "8. Aktivieren/Deaktivieren und Löschen von Cookies",
+          "content": "Sie können Ihren Internetbrowser verwenden, um Cookies automatisch oder manuell zu löschen. Sie können auch festlegen, dass bestimmte Cookies nicht gesetzt werden dürfen. Eine andere Möglichkeit besteht darin, die Einstellungen Ihres Internetbrowsers so zu ändern, dass Sie jedes Mal eine Nachricht erhalten, wenn ein Cookie gesetzt wird. Weitere Informationen zu diesen Optionen finden Sie in den Anweisungen im Hilfebereich Ihres Browsers. Bitte beachten Sie, dass unsere Website möglicherweise nicht ordnungsgemäß funktioniert, wenn alle Cookies deaktiviert sind. Wenn Sie die Cookies in Ihrem Browser löschen, werden sie nach Ihrer Zustimmung erneut gesetzt, wenn Sie unsere Website erneut besuchen."
+      },
+      "yourRights": {
+        "title": "9. Ihre Rechte in Bezug auf personenbezogene Daten",
+        "content": "Sie haben folgende Rechte in Bezug auf Ihre personenbezogenen Daten: Sie haben das Recht zu wissen, warum Ihre personenbezogenen Daten benötigt werden, was damit geschieht und wie lange sie aufbewahrt werden. Recht auf Zugang: Sie haben das Recht, auf Ihre uns bekannten personenbezogenen Daten zuzugreifen. Recht auf Berichtigung: Sie haben das Recht, Ihre personenbezogenen Daten jederzeit zu ergänzen, zu korrigieren, zu löschen oder zu sperren. Wenn Sie uns Ihre Zustimmung zur Verarbeitung Ihrer Daten geben, haben Sie das Recht, diese Zustimmung zu widerrufen und Ihre personenbezogenen Daten löschen zu lassen. Recht auf Datenübertragung: Sie haben das Recht, alle Ihre personenbezogenen Daten vom Verantwortlichen anzufordern und sie in ihrer Gesamtheit an einen anderen Verantwortlichen zu übertragen. Widerspruchsrecht: Sie können der Verarbeitung Ihrer Daten widersprechen. Wir halten uns daran, es sei denn, es gibt berechtigte Gründe für die Verarbeitung. Um diese Rechte auszuüben, kontaktieren Sie uns bitte. Bitte beziehen Sie sich auf die Kontaktinformationen am Ende dieser Cookie-Richtlinie. Wenn Sie eine Beschwerde darüber haben, wie wir Ihre Daten behandeln, würden wir gerne von Ihnen hören, aber Sie haben auch das Recht, eine Beschwerde bei der Aufsichtsbehörde (der Datenschutzbehörde) einzureichen."
+    },
+    "contactDetails": {
+        "title": "10. Kontaktdaten",
+        "content": "Bei Fragen und/oder Anmerkungen zu unserer Cookie-Richtlinie und dieser Erklärung kontaktieren Sie uns bitte über die folgenden Kontaktdaten:",
+        "name": "Misagh Azimi",
+        "address": "Bröhmkenweg 2, Essen, Deutschland"
     }
-    
-}
+      }
+  }

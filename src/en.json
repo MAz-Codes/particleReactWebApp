@@ -9,8 +9,8 @@
       "lecturer": "LECTURER"
     },
     "bio": {
-      "one": "I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music composition, creative digital technologies, and the exploration of artificial intelligence.",
-      "two": "I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I release both as ",
+      "one": "I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music creation and the exploration of creative digital technologies.",
+      "two": "I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I produce and release both as ",
       "three": "as well as under my ",
       "mani":"MÂNĪ",
       "four": "own name",
@@ -20,7 +20,7 @@
       "seven": ", and my skills as a Front-End Developer are certified by ",
       "meta":"Meta",
       "eight": "And I look like this <",
-      "faEnd": "I made this website using React and Vite.js!"
+      "faEnd": ""
     },
     "links": {
       "music": "MUSIC <",
@@ -39,6 +39,100 @@
     },
     "video":{
       "disco": "VIDEOS",
-      "desco": "MULTI-CHANNEL VIDEOS, MUSIC VIDEOS, FILMS, AND ANIMATIONS"
+      "desco": "MULTI-CHANNEL VIDEOS, MUSIC VIDEOS, FILMS, AND ANIMATIONS",
+      "outside":"2023 | Music Video made by prompting into a generative AI video tool",
+      "verloren":"2023 | A film I composed the music for, directed by Simon Baucks",
+      "water": "2019 | Music Video to GETIER's Single staring Minju Kim",
+      "hideous":"2018 | Music Vide to GETIER's Single, made by Rebecca ter Braak and Nico Kleemann",
+      "holes": "2017 | Directed by Simon Baucks. With Yi An Chen and Constantin Leonhard",
+      "panic":"2016 | 3 channel video with 4 audio channels made using Cinema 4D and Ferra Fluid",
+      "krumm":"2016 | 2 channel video 4 channel audio",
+      "sum":"2015 | This 3 channel video piece was premiered during the NOW! Festival.",
+      "can":"2014 | C.A.N was made after many beers.",
+      "inmotion":"2014 | I composed and produced the music for this award winning video by Simon Baucks."
+    },
+    "contact":{
+      "title":"CONTACT AND IMPRINT",
+      "touch":"GET IN TOUCH",
+      "callme":"I am always eager to explore new collaborations, whether they're artistically driven or rooted in academic pursuits. My passion lies in merging creativity with knowledge, pushing the boundaries of what's possible. Do not hesitate to contact me.",
+      "data":"DATA AND THIS WEBSITE",
+      "person":"This website and its contents are designed and maintained by Misagh Azimi.",
+      "coded":"I coded this website with React, built it with Vite.js and deployed on Netlify. You can find the code ",
+      "here":"here",
+      "cookie":"I use Cookies. If you use any social media functions or click on any external pages, they will track you. I personally do not collect, track, process or sell any of your personal data.",
+      "eu":"EU PRIVACY POLICY",
+      "policy":"This Cookie Policy was last updated on 7. June 2023 and applies to citizens and legal permanent residents of the European Economic Area and Switzerland.",
+      "introduction": {
+        "title": "1. Introduction",
+        "content": "My website, https://misaghazimi.com (hereinafter: 'the website') uses cookies and other related technologies (for convenience all technologies are referred to as 'cookies'). Cookies are also placed by third parties we have engaged. In the document below we inform you about the use of cookies on our website."
+      },
+      "whatAreCookies": {
+        "title": "2. What are cookies?",
+        "content": "A cookie is a small simple file that is sent along with pages of this website and stored by your browser on the hard drive of your computer or another device. The information stored therein may be returned to our servers or to the servers of the relevant third parties during a subsequent visit."
+      },
+      "whatAreScripts": {
+        "title": "3. What are scripts?",
+        "content": "A script is a piece of program code that is used to make our website function properly and interactively. This code is executed on our server or on your device."
+      },
+      "whatIsWebBeacon": {
+        "title": "4. What is a web beacon?",
+        "content": "A web beacon (or a pixel tag) is a small, invisible piece of text or image on a website that is used to monitor traffic on a website. In order to do this, various data about you is stored using web beacons."
+      },
+      "cookies": {
+        "title": "5. Cookies",
+        "technicalOrFunctional": {
+          "title": "5.1 Technical or functional cookies",
+          "content": "Some cookies ensure that certain parts of the website work properly and that your user preferences remain known. By placing functional cookies, we make it easier for you to visit our website. This way, you do not need to repeatedly enter the same information when visiting our website and, for example, the items remain in your shopping cart until you have paid. We may place these cookies without your consent."
+        },
+        "marketingOrTracking": {
+          "title": "5.2 Marketing/Tracking cookies",
+          "content": "Marketing/Tracking cookies are cookies or any other form of local storage, used to create user profiles to display advertising or to track the user on this website or across several websites for similar marketing purposes."
+        }
+      },
+      "placedCookies": {
+        "title": "6. Placed cookies",
+        "items": {
+          "one":"Statistics (anonymous)",
+          "two":"Google Fonts",
+          "three":"Marketing/Tracking",
+          "four":"Consent to service google-fonts",
+          "five":"Vimeo",
+          "six":"Statistics",
+          "seven":"Consent to service vimeo",
+          "eight":"YouTube",
+          "nine":"Marketing/Tracking, Functional",
+          "ten":"Consent to service youtube",
+          "eleven":"Miscellaneous",
+          "twelve":"Purpose pending investigation",
+          "thirteen":"Consent to service miscellaneous"
+        }
+      },
+      "consent": {
+        "title": "7. Consent",
+        "content": "When you visit our website for the first time, we will show you a pop-up with an explanation about cookies. As soon as you click on \"Save preferences\", you consent to us using the categories of cookies and plug-ins you selected in the pop-up, as described in this Cookie Policy. You can disable the use of cookies via your browser, but please note that our website may no longer work properly.",
+        "manageYourConsentSettings": {
+          "title": "7.1 Manage your consent settings",
+          "items": {
+            "one":"Functional",
+            "two":"Always active",
+            "three":"Statistics",
+            "four":"Marketing"
+        }
+      }
+      },
+      "enableDisableDeleteCookies": {
+        "title": "8. Enabling/disabling and deleting cookies",
+        "content": "You can use your internet browser to automatically or manually delete cookies. You can also specify that certain cookies may not be placed. Another option is to change the settings of your internet browser so that you receive a message each time a cookie is placed. For more information about these options, please refer to the instructions in the Help section of your browser. Please note that our website may not work properly if all cookies are disabled. If you do delete the cookies in your browser, they will be placed again after your consent when you visit our website again."
+      },
+      "yourRights": {
+        "title": "9. Your rights with respect to personal data",
+        "content": "You have the following rights with respect to your personal data: You have the right to know why your personal data is needed, what will happen to it, and how long it will be retained for. Right of access: You have the right to access your personal data that is known to us. Right to rectification: you have the right to supplement, correct, have deleted or blocked your personal data whenever you wish. If you give us your consent to process your data, you have the right to revoke that consent and to have your personal data deleted. Right to transfer your data: you have the right to request all your personal data from the controller and transfer it in its entirety to another controller. Right to object: you may object to the processing of your data. We comply with this, unless there are justified grounds for processing. To exercise these rights, please contact us. Please refer to the contact details at the bottom of this Cookie Policy. If you have a complaint about how we handle your data, we would like to hear from you, but you also have the right to submit a complaint to the supervisory authority (the Data Protection Authority)."
+      },
+      "contactDetails": {
+        "title": "10. Contact details",
+        "content": "For questions and/or comments about our Cookie Policy and this statement, please contact us by using the following contact details:",
+        "name": "Misagh Azimi",
+        "address": "Bröhmkenweg 2, Essen, Germany"
+      }
     }
 }
