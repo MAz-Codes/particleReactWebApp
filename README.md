@@ -2,13 +2,13 @@
 
 ## Introduction
 
-Hello there! Welcome to the repository of my personal web application built using React. This project is a true reflection of my passions and skills, seamlessly integrating particle animations, multi-language capabilities, and aesthetic themes. Here, you'll also get a glimpse of my music, videos, research endeavors, and ways to contact me, as this web app also works as my personal portfolio!
+Hello there! Welcome to the repository of my web application, built using React. This project is a true reflection of my passions and skills, seamlessly integrating particle animations, multi-language capabilities, and aesthetic themes. Here, you'll also get a glimpse of my music, videos, research endeavors, and ways to contact me, as this web app also works as my personal portfolio.
 
 ## Features I've Incorporated
 
 ### Particle Animations:
 
-I've devised three distinct particle systems – Web particle, NewPageParticle, and SecondNewPageParticles – to provide a visually engaging backdrop and some fun interactivity.
+I've devised three distinct particle systems – Web particle, NewPageParticle, and SecondNewPageParticles – to provide a visually engaging backdrop and some fun interactivity using the mouse.
 
 ### Multi-Language Support:
 

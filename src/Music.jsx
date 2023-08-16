@@ -326,7 +326,7 @@ import Abrupt from "/src/assets/Pics/Cover_Abrupt.jpg"
                       <FontAwesomeIcon className="all-bandcamp" fontSize={"40"} _hover={{backgroundColor:"#22c3f4", textColor:"black", borderColor:"transparent", }} _focus={{borderColor:"white", outlineColor:"transparent"}}
                       onClick={()=> window.open("https://mani-music.bandcamp.com/album/vier")}icon={faBandcamp} />
                       <FontAwesomeIcon className="all-spotify" fontSize={"40"} _hover={{backgroundColor:"#22c3f4", textColor:"black", borderColor:"transparent", }} _focus={{borderColor:"white", outlineColor:"transparent"}}
-                      onClick={()=> window.open("https://open.spotify.com/album/1sPiX8RHVktQxKRWjXf8P0")}icon={faSpotify} />
+                      onClick={()=> window.open("https://open.spotify.com/track/4LxvA2alxWJ9XlNXv72NnP?si=38042b8e14934aa8")}icon={faSpotify} />
                       <FontAwesomeIcon className="all-apple" fontSize={"40"} _hover={{backgroundColor:"#22c3f4", textColor:"black", borderColor:"transparent", }} _focus={{borderColor:"white", outlineColor:"transparent"}}
                       onClick={()=> window.open("https://music.apple.com/de/album/black-holes-feat-maha-taheri-single/1317485502?l=en-GB")}icon={faItunesNote} />
                     </Stack>

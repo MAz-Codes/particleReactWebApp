@@ -62,7 +62,7 @@ import { useTranslation } from 'react-i18next';
         },
         {id: "8",
         src: SUM,
-        url: 'https://youtu.be/JTzOsqDAvQM',
+        url: 'https://vimeo.com/133282245',
         title: "IIISUM",
         descrition: t('video.sum')
         },

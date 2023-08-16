@@ -72,8 +72,8 @@ class NewPageParticle {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.speedX = Math.random() * 1.5 - 0.7;
-    this.speedY = Math.random() * 0.8 + 0.2; // Positive speed for downward movement
+    this.speedX = Math.random() * 1.1 - 0.7;
+    this.speedY = Math.random() * 0.3 + 0.1; // Positive speed for downward movement
     this.direction = Math.random() * Math.PI * 2; // Random direction in radians
   }
 
@@ -167,7 +167,7 @@ const iconNavItems = [
   { icon: faBandcamp, url: 'https://mani-music.bandcamp.com' },
   { icon: faGithub, url: 'https://github.com/MAz-Codes' },
   { icon: faSpotify, url: 'https://open.spotify.com/artist/0py5114d1Up5J4gmgtKyvH?si=3S6PseAMTCSp_gXQZSbp5Q' },
-  { icon: faYoutube, url: 'https://www.youtube.com/results?search_query=mânī' },
+  { icon: faYoutube, url: 'https://www.youtube.com/@manimusic_official' },
   { icon: faVimeoV, url: 'https://vimeo.com/user29170569' },
   { icon: faLinkedin, url: 'https://www.linkedin.com/in/misagh-azimi' },
   { icon: faInstagram, url: 'https://www.instagram.com/_manimusic_/?hl=en'},
