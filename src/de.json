@@ -10,7 +10,9 @@
     },    
     "bio": {
       "one": "Ich bin Misagh Azimi, ein deutsch-iranischer Künstler und Akademiker. In meiner facettenreichen Arbeit vertiefe ich mich in Kreation der Musik und die Erforschung kreativer digitalen Technologien.",
-      "two": "Ich komponiere hauptsächlich für darstellende Künste und visuelle Medien wie Theater, zeitgenössischen Tanz oder Kurzfilme. Als Musiker produziere und veröffentliche ich sowohl als ",
+      "two": "Ich komponiere hauptsächlich für",
+      "perform":" darstellende Künste ",
+      "two2": "und visuelle Medien wie Theater, zeitgenössischen Tanz oder Kurzfilme. Als Musiker produziere und veröffentliche ich sowohl als ",
       "three": "als auch unter meinem ",
       "mani":"MÂNĪ",
       "four": "eigenen Namen",
@@ -134,5 +136,23 @@
         "name": "Misagh Azimi",
         "address": "Bröhmkenweg 2, Essen, Deutschland"
     }
+      },
+      "research":{
+          "title":"(ARTISTIC) RESEARCH",
+          "paper":{
+            "titel":"Harmonizing Tradition and Innovation -",
+            "subtitle":" Integrating Digital Competency in Music Education (Position Paper) - In English",
+            "content":"The digital era's influence on music has been significant and transformative, affecting the aesthetics, the methodologies of creation, and the way it is consumed. Yet, the integration of these digital innovations into music education has been slow, often reduced to niche courses or dismissed as inferior to traditional methods. This writing explores the importance of musical digital literacy, accessibility of digital means and potential applications of hybrid education models in the current music education paradigm specifically at schools and universities. It emphasizes the need for educators to adapt to these changes, ensuring that future generations are equipped with the skills, knowledge, and passion they need to thrive in the rapidly changing music landscape. Read the position paper"
+          },
+        "game": {
+          "title":" Game Audio und mögliche Anwendungen für interaktive oder nicht-lineare Musik",
+          "content":"Unterstützt von der GEMA, konzentrierte sich diese viermonatige künstlerische Forschung auf die Werkzeuge, die normalerweise für die Implementierung von Audio und Musik in Videospiele verwendet werden, und deren mögliche Auswirkungen auf die Erstellung von interaktiven Audio- und Musikstücken, Aufführungen und Installationen. Derzeit biete ich die Ergebnisse als Teil meiner Vorlesung 'Einführung in Game Audio' an der Folkwang Universität der Künste an."
+        },
+        "vr":{
+          "title":"-eye- cannot erase ",
+          "subtitle":"Anwendungen von Virtual Reality in den Künsten",
+          "content":"Unterstützt und finanziert vom The European Center for Creative Economy und dem Ministerium für Kultur und Bildung des Landes NRW, beschäftigte sich diese künstlerische Forschung mit den Anwendungen von Virtual Reality in digitalen und modernen Künsten. Ein interaktives Audio-Visuelles Werk wurde für ein VR-Headset komponiert und eine Reihe von Vorträgen, Podcasts und Tutorials zu Unity, Immersion, Cinema 4D usw. wurden ",
+          "content2": " als Ergebnis der Forschung produziert und veröffentlicht."
+        }
       }
   }

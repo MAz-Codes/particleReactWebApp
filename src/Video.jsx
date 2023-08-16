@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faPlay } from '@fortawesome/free-solid-svg-icons';
-import {Heading, Text, Box, Grid, Image, useBreakpointValue} from '@chakra-ui/react';
+import {Heading,Divider, Text, Box, Grid, Image, useBreakpointValue} from '@chakra-ui/react';
 import Outside from "/src/assets/Pics/Video_Outside.png"
 import Verloren from "/src/assets/Pics/Video_Verloren.png"
 import Water from "/src/assets/Pics/Video_Blackwater.png"
@@ -96,7 +96,7 @@ import { useTranslation } from 'react-i18next';
                     <Heading fontSize={{ base: "xl", md: "30", lg: "45", xl: "50" }} color={"#bdc3c7"}>{t('video.disco')}</Heading>
                     <Text fontSize={{ base: "xs", md: "15", lg: "23", xl: "30" }} color={"#bdc3c7"}>{t('video.desco')}</Text>
                 </Box>
-
+                <Divider mt="10"></Divider>
                 <Box
                     display="flex"
                     justifyContent="center"

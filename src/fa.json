@@ -10,13 +10,15 @@
     },
     "bio": {
       "one": "من میثاق عظیمی هستم، هنرمند ایرانی-آلمانی و مدرس دانشگاه.  من در کار هنری و علمی به ترکیب موسیقی، کاربرد خلاقانه تکنولوژی های دیجیتال و کاوش در هوش مصنوعی علاقه مند هستم.",
-      "two": ".به عنوان آهنگساز بیشتر برای هنرهای اجرایی و رسانه‌های تصویری مانند تئاتر، رقص معاصر یا فیلم‌های کوتاه آهنگسازی می‌کنم. موسیقی های من هم تحت اسم  ",
+      "two": "به عنوان آهنگساز بیشتر برای    ",
+      "perform": "هنرهای اجرایی ",
+      "two2": "   رسانه‌های تصویری مانند تئاتر، رقص معاصر یا فیلم‌های کوتاه آهنگسازی می‌کنم. موسیقی های من هم تحت اسم",
       "three": "و همچنین ",
-      "mani":"مانی",
+      "mani":" مانی",
       "four": "اسم خودم منتشر میشوند.",
       "five": "حوزه‌های تحقیق علمی من شامل: هوش مصنوعی برای کاربردهای خلاقانه، موسیقی و رسانه‌های دیجیتال، تولید موسیقی، و همچنین صدا و موسیقی بازی‌های ویدئویی و پیاده‌سازی آن‌ها می‌شود.",
       "six": " من دارای مدرک کارشناسی ارشد موسیقی از دانشگاه هنرهای فولکوانگ آلمان هستم. همچنین گواهینامه هوش مصنوعی از دانشگاه",
-      "stanford":"استنفورد",
+      "stanford":" استنفورد",
       "seven": " نیز دارم و مهارت‌های من به عنوان طراح وب توسط  ",
       "meta": "'متا'",
       "faEnd": "مورد تایید قرار گرفته است.",
@@ -135,5 +137,23 @@
               "name": "میثاق عظیمی",
               "address": "Bröhmkenweg 2, اسن، آلمان"
           }
+      },
+      "research":{
+        "title":"تحقیقات هنری",
+        "paper":{
+          "titel":"Harmonizing Tradition and Innovation -",
+          "subtitle":" Integrating Digital Competency in Music Education (Position Paper) - In English",
+          "content":"The digital era's influence on music has been significant and transformative, affecting the aesthetics, the methodologies of creation, and the way it is consumed. Yet, the integration of these digital innovations into music education has been slow, often reduced to niche courses or dismissed as inferior to traditional methods. This writing explores the importance of musical digital literacy, accessibility of digital means and potential applications of hybrid education models in the current music education paradigm specifically at schools and universities. It emphasizes the need for educators to adapt to these changes, ensuring that future generations are equipped with the skills, knowledge, and passion they need to thrive in the rapidly changing music landscape. Read the position paper"
+        },
+        "game": {
+          "title":" صدای در بازی های کامپیوتری و کاربردهای احتمالی برای موسیقی تعاملی یا غیر خطی",
+          "content":"با پشتیبانی جامعه اجرای موسیقی و حقوق تکثیر مکانیکی آلمان، این تحقیق هنری چهار ماهه بر روی ابزارهای مورد استفاده برای پیاده‌سازی صدا و موسیقی در بازی‌های ویدئویی و تأثیرات احتمالی آنها برای ایجاد قطعات، اجراها و نصب‌های صوتی تعاملی متمرکز شده است. در حال حاضر، نتایج را به عنوان بخشی از کلاسی با عنوان 'صدای بازی های کامپیوتری' در دانشگاه هنر فولکوانگ ارائه می‌دهم."
+        },
+        "vr":{
+          "title":"-eye- cannot erase ",
+          "subtitle":"کاربردهای واقعیت مجازی در هنرها",
+          "content":"با پشتیبانی و سرمایه‌گذاری مرکز اروپایی اقتصاد خلاق و وزارت فرهنگ و آموزش ایالت وستفالن در آلمان، این تحقیق هنری بر کاربردهای واقعیت مجازی در هنرهای دیجیتال و مدرن کار تمرکز کرد. یک قطعه صوتی-تصویری تعاملی برای یک هدست ساخته شد و مجموعه‌ای از سخنرانی‌ها، پادکست‌ها و آموزش‌ها ",
+          "content2": " تولید و منتشر شد."
+        }
       }
   }

@@ -9,12 +9,14 @@
       "lecturer": "LECTURER"
     },
     "bio": {
-      "one": "I'm Misagh Azimi, an Iranian-German artist and lecturer. In my multifaceted work, I delve into music creation and the exploration of creative digital technologies.",
-      "two": "I predominantly compose for performing arts and visual media such as theater, contemporary dance or short films. As a performing musician I produce and release both as ",
+      "one": "I'm Misagh Azimi, an Iranian-German artist and lecturer. My work is multifaceted, encompassing music creation and the exploration of creative digital technologies.",
+      "two": "I primarily compose for the ",
+      "perform":"performing arts, ",
+      "two2":" including theater and contemporary dance, as well as visual media such as short films. As a performing musician, I produce and release music both under the pseudonym ",
       "three": "as well as under my ",
       "mani":"MÂNĪ",
       "four": "own name",
-      "five": "My areas of scholary interest and research include: artificial intelligence for creative applciations, music and digital media, music production and also video-game audio and music implimentation.",
+      "five": "My scholarly interests and research areas include artificial intelligence for creative applications, music and digital media, music production, and video game audio and music implementation.",
       "six": "I hold a Master's degree in Music from Folkwang University of the Arts. I also hold a Machine Learning certificate from ",
       "stanford":"Stanford Online",
       "seven": ", and my skills as a Front-End Developer are certified by ",
@@ -133,6 +135,24 @@
         "content": "For questions and/or comments about our Cookie Policy and this statement, please contact us by using the following contact details:",
         "name": "Misagh Azimi",
         "address": "Bröhmkenweg 2, Essen, Germany"
+      }
+    },
+    "research":{
+      "title":"(ARTISTIC) RESEARCH",
+      "paper":{
+        "titel":"Harmonizing Tradition and Innovation -",
+        "subtitle":" Integrating Digital Competency in Music Education (Position Paper)",
+        "content":"The digital era's influence on music has been significant and transformative, affecting the aesthetics, the methodologies of creation, and the way it is consumed. Yet, the integration of these digital innovations into music education has been slow, often reduced to niche courses or dismissed as inferior to traditional methods. This writing explores the importance of musical digital literacy, accessibility of digital means and potential applications of hybrid education models in the current music education paradigm specifically at schools and universities. It emphasizes the need for educators to adapt to these changes, ensuring that future generations are equipped with the skills, knowledge, and passion they need to thrive in the rapidly changing music landscape. Read the position paper"
+      },
+      "game": {
+        "title":" Game Audio and Possible Implications for Interactive or Non-Linear Music",
+        "content":"Supported by GEMA (Society for musical performing and mechanical reproduction rights), this 4 month artistic research focused on the tools used for audio and music implementation into video games and their possible implications for creating interactive audio and music pieces, performances and installations. I currently offer the results as a part of my lecture “Introduction to Game Audio” at the Folkwang University of the Arts"
+      },
+      "vr":{
+        "title":"-eye- cannot erase ",
+        "subtitle":"Virtual Reality Applications in the Arts",
+        "content":"Supported and funded by the European Center for Creative Economy and the Ministry of Culture and Education of the state of NRW in Germany, this artistic research worked on the applications of virtual reality in digital and modern arts. An interactive audio-visual piece was composed for a VR headset and a series of talks, podcasts and tutorials about Unity, immersion, Cinema 4D etc. were produced and published ",
+        "content2": " as the result of the research."
       }
     }
 }

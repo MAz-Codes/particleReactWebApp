@@ -294,6 +294,18 @@ function App() {
     }
   };
 
+  //function for the Esc key to close all the opened windows
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      // Close all windows/modals
+      setShowPhoto(false);
+      setShowMusic(false);
+      setShowVideo(false);
+      setShowResearch(false);
+      setShowContact(false);
+    }
+  };
+
   const handleWindowResize = () => {
   const colorStart = isDarkMode ? '#141d28' : '#334c6c';
   const colorEnd = isDarkMode ? '#936d67' : '#ad817a';
@@ -314,7 +326,7 @@ function App() {
   }
   };
 
-  //checking if the device is a touch cell, because of the second page particle games
+  //checking if the device is a touch cellphone, because of the second page particle games
   const isCellphone = () => {
     const widthThreshold = 768;
     const userAgent = navigator.userAgent;
@@ -329,7 +341,16 @@ function App() {
     return false;
   };
 
-//local stoprage for cookie consent 
+  //listener for Esc key
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+//local stoprage for cookie consent
   useEffect(() => {
     const choice = localStorage.getItem('cookieChoice');
     if (choice === 'accepted' || choice === 'declined') {
@@ -592,7 +613,7 @@ function App() {
         {newPage && !secondNewPage && (
           <div className={`new-page-layout${fadeOut ? " fade-out" : ""}`}>
             <div className="flex-container">
-              <h1 className='new-page-description'>{t('bio.one')}<br/><br/>{t('bio.two')} <a href='https://mani-music.bandcamp.com/' target="_blank">{t('bio.mani')}</a> {t('bio.three')} <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=apIhj5-RSXOFcBVTa6WvOA' target='_blank'>{t('bio.four')}</a>.
+              <h1 className='new-page-description'>{t('bio.one')}<br/><br/>{t('bio.two')} <a href="https://linktr.ee/misaghazimi" target='_blank'>{t('bio.perform')}</a>{t('bio.two2')}<a href='https://open.spotify.com/artist/0py5114d1Up5J4gmgtKyvH?si=6qXG4aoBS0yzy3RAPmod1Q' target="_blank">{t('bio.mani')}</a> {t('bio.three')} <a href='https://open.spotify.com/artist/1bHPms3MQPuVx9thn1EeVJ?si=apIhj5-RSXOFcBVTa6WvOA' target='_blank'>{t('bio.four')}</a>.
                   <br/><br/>{t('bio.five')}<br/><br/>{t('bio.six')} <a href='https://coursera.org/share/51c967c62634b2274f01707474fcd755' target='_blank'>{t('bio.stanford')}</a>{t('bio.seven')}<a href='https://coursera.org/share/bb38f1df1f3cf19183f512eb5bb8283b' target='_blank'>{t('bio.meta')}.</a> {t('bio.faEnd')}</h1>
               <div className="face-container">
                 <h1 className= "face-text" ref={photoTextRef} onClick={() => setShowPhoto(!showPhoto)}>{t('bio.eight')}</h1>
