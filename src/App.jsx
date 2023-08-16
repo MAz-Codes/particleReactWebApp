@@ -654,11 +654,11 @@ function App() {
               <img src={logo} alt="Logo" className="navbar-logo" />
             </a>
           </div>
-          <div className='language-buttons'>
+          {!isCellphone() && (<div className='language-buttons'>
             <button className='language-en' onClick={() => changeLanguage('en')}>EN </button>
             <button className='language-de' onClick={() => changeLanguage('de')}>DE </button>
             <button className='language-fa' onClick={() => changeLanguage('fa')}>فارسی</button>
-          </div>
+          </div>)}
           <div className="hamburger-container">
             <div className="hamburger-menu" onClick={() => { setMenuOpen(!menuOpen); }}>
               ☰
