@@ -208,6 +208,7 @@ function App() {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    localStorage.setItem('preferredLanguage', lng);
   }
 
   const handleArrowClick = () => {
@@ -340,6 +341,14 @@ function App() {
     }
     return false;
   };
+
+  //Local storage for preffered language
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (savedLanguage) {
+        i18n.changeLanguage(savedLanguage);
+    }
+  }, []);
 
   //listener for Esc key
   useEffect(() => {
