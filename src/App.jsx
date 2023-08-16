@@ -169,7 +169,7 @@ const iconNavItems = [
   { icon: faSpotify, url: 'https://open.spotify.com/artist/0py5114d1Up5J4gmgtKyvH?si=3S6PseAMTCSp_gXQZSbp5Q' },
   { icon: faYoutube, url: 'https://www.youtube.com/results?search_query=mânī' },
   { icon: faVimeoV, url: 'https://vimeo.com/user29170569' },
-  { icon: faLinkedin, url: 'www.linkedin.com/in/misagh-azimi' },
+  { icon: faLinkedin, url: 'https://www.linkedin.com/in/misagh-azimi' },
   { icon: faInstagram, url: 'https://www.instagram.com/_manimusic_/?hl=en'},
 ];
 
