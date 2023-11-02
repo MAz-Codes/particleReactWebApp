@@ -39,7 +39,7 @@ const Research = forwardRef((props, ref) => {
                     <Grid gap="5vw" templateRows={`auto`} w="100%">
                         <Box text-align="left">
                             <Text  ml="1vw" mt="1vw" fontSize={{ base: "lg", md: "20", lg: "24", xl: "28" }} fontWeight="bold" textAlign="left">
-                            2023 | <Text  fontSize= {{ base: "xl", md: "25", lg: "28", xl: "32" }}as="i"><a color={"#bdc3c7"} href="https://www.dropbox.com/scl/fi/0dr98xj2ot77794xti9c8/Integrating-Digital-Competency-in-Music-Education_Misagh-Azimi.pdf?rlkey=nud81q24jvpcawmie60fol9bh&dl=0" target='_blank'>{t('research.paper.titel')}</a></Text> {t('research.paper.subtitle')}
+                            2023 | <Text  fontSize= {{ base: "xl", md: "25", lg: "28", xl: "32" }}as="i"><a color={"#bdc3c7"} href="https://www.dropbox.com/scl/fi/yq13hgpeu096kj8wqqwq6/Integrating-Digital-Competency-in-Music-Education_Misagh-Azimi.pdf?rlkey=pnqbfs4j2aptlwojeftx4rikz&dl=0" target='_blank'>{t('research.paper.titel')}</a></Text> {t('research.paper.subtitle')}
                             </Text>
                             <Text my={"1vw"} ml="1vw" fontSize={{ base: "sm", md: "15", lg: "17", xl: "20" }} textAlign="left">{t('research.paper.content')}<a color={"#bdc3c7"} href="https://www.dropbox.com/scl/fi/0dr98xj2ot77794xti9c8/Integrating-Digital-Competency-in-Music-Education_Misagh-Azimi.pdf?rlkey=nud81q24jvpcawmie60fol9bh&dl=0" target='_blank'> &lt;/{t('contact.here')}&gt;.</a></Text>
                         </Box>
