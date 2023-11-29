@@ -135,13 +135,13 @@ a:hover {
 
 .page-links {
   font-size: calc(min(4vh, 4vw) + .25vw);
-  display: block;           /* Ensure it behaves as a block-level element */
-  white-space: nowrap;      /* Prevent contents from wrapping */
-  width: 100%; 
-  color: white;             /* Ensure it takes up the maximum width of the parent */     /* Existing style */
-  margin-top: 0;            /* Existing style */
-  padding-top: 0;           /* Existing style */
-  transition: transform 0.5s; /* Existing style */
+  display: block;
+  white-space: nowrap;
+  width: 100%;
+  color: white;
+  margin-top: 0;
+  padding-top: 0;
+  transition: transform 0.5s;
 }
 
 .face-container {
@@ -151,7 +151,7 @@ a:hover {
   align-items: center;
   opacity: 0;
   animation: fadeIn 3s forwards;
-  position: relative; /* If needed, but avoid absolute */
+  position: relative;
   z-index:6;
   color: white;
   font-size: calc(min(1.75vh, 2vw) + .25vw);
@@ -162,11 +162,12 @@ a:hover {
   cursor: url('hand.png'), pointer;
 }
 .second-new-page{
+  transition: opacity 4s ease-out;
   z-index:6;
 }
 .second-new-page-particles-canvas {
   opacity: 1;
-  transition: opacity 1.4s ease-out;
+  
   z-index:1
 }
 
@@ -258,8 +259,8 @@ a:hover {
 }
 .new-page-description {
 
-  max-width: 100%; /* Ensure it doesn't occupy the entire row. Adjust as necessary */
-  max-height: 90vh; /* Set a maximum height for the container. You can adjust this as per your design */
+  max-width: 100%; 
+  max-height: 90vh; 
   opacity: 0;
   animation: fadeIn 4s forwards;
   color: #bdc3c7;
@@ -268,8 +269,8 @@ a:hover {
   text-align: left;
   z-index: 2;
   overflow-wrap: break-word;
-  overflow-y: auto; /* Add vertical scrolling if content exceeds the max-height */
-  position: relative; /* If needed, but avoid absolute */
+  overflow-y: auto; 
+  position: relative;
 }
 
 
@@ -432,7 +433,7 @@ text-align: center;
 }
 .particles-canvas {
   opacity: 0;
-  animation: fadeIn 0.5s forwards;
+  animation: fadeIn 2s forwards;
   position: absolute;
   top: 0;
   left: 0;
@@ -587,7 +588,7 @@ text-align: center;
   font-size: 40px;
   background: transparent;
   border: none;
-  color: white;
+  color: #395478;
   outline: none;
   z-index: 4;
   cursor: url('hand.png'), pointer;
@@ -595,6 +596,7 @@ text-align: center;
 }
 
 .arrow-text{
+  color: #395478;
   font-size: calc(min(1vh, 1vw) + .25vw);;
   font-family:"Elianto";
   z-index:4;

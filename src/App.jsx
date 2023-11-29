@@ -72,8 +72,8 @@ class NewPageParticle {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.speedX = Math.random() * 1.1 - 0.7;
-    this.speedY = Math.random() * 0.3 + 0.1; // Positive speed for downward movement
+    this.speedX = Math.random() * 1.1 - 0.5;
+    this.speedY = Math.random() * 1 + 0.1; // Positive speed for downward movement
     this.direction = Math.random() * Math.PI * 2; // Random direction in radians
   }
 
@@ -94,7 +94,7 @@ class NewPageParticle {
   }
 
   draw(ctx) {
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
     ctx.lineWidth = 2; 
     ctx.save(); // Save the current state of the context
     ctx.translate(this.x, this.y); // Change the origin to the particle's center
@@ -106,6 +106,7 @@ class NewPageParticle {
     ctx.closePath();
     ctx.stroke();
     ctx.restore(); // Restore the context to its previous state
+
   }
 }
 
@@ -259,7 +260,7 @@ function App() {
     canvas.height = window.innerHeight;
 
     const backgroundGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    backgroundGradient.addColorStop(0, colorStart);
+    backgroundGradient.addColorStop(0.2, colorStart);
     backgroundGradient.addColorStop(1, colorEnd);
     ctx.fillStyle = backgroundGradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -308,8 +309,8 @@ function App() {
   };
 
   const handleWindowResize = () => {
-  const colorStart = isDarkMode ? '#141d28' : '#334c6c';
-  const colorEnd = isDarkMode ? '#936d67' : '#ad817a';
+  const colorStart = isDarkMode ? '#141d28' : '#08203e';
+  const colorEnd = isDarkMode ? '#936d67' : '#f8dadc';
   window.addEventListener('resize', handleWindowResize);
   if (backgroundCanvasRef.current) {
     updateCanvasDimensions(backgroundCanvasRef, colorStart, colorEnd);
@@ -688,10 +689,11 @@ function App() {
         )}
       </div>
       {!showMusic && !showVideo && !showContact && !showResearch && (
-  <button className="arrow-button" onClick={handleArrowClick}>
-    <div className="arrow-text">
+  <button className="arrow-button" style={{ color: newPage ? 'white' : '#395478' }} onClick={handleArrowClick}>
+    <div className="arrow-text" style={{ color: newPage ? 'white' : '#395478' }}>
       {secondNewPage ? t("arrow.home") : (newPage ? t("arrow.play") : t("arrow.me"))}
     </div>
+
     <FontAwesomeIcon className="arrow" icon={faArrowDown} />
   </button>
       )}
